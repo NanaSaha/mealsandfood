@@ -1,0 +1,60 @@
+<ion-content overflow-scroll='true' class="background">
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <form [formGroup]="loginForm">
+
+    <ion-list class="main-view">
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <ion-item>
+        <ion-input type="text" placeholder="Mobile number" formControlName="mobile_number" name="mobile_number" [class.invalid]="!loginForm.controls.mobile_number.valid && (loginForm.controls.mobile_number.dirty || submitAttempt)"></ion-input>
+        <ion-label>
+          <ion-icon ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>
+        </ion-label>
+        <ion-label> </ion-label>
+      </ion-item>
+      <br/>
+
+      <ion-item>
+
+        <ion-input type="password" placeholder="Password" formControlName="password" name="password" [class.invalid]="!loginForm.controls.password.valid && (loginForm.controls.password.dirty || submitAttempt)"></ion-input>
+        <ion-label>
+          <ion-icon name="ios-unlock"></ion-icon>
+        </ion-label>
+
+        <ion-label> </ion-label>
+      </ion-item>
+
+      <br/>
+      <p>
+        <button ion-button color="kaya" class="button button-dark customBtn" [disabled]="!this.loginForm.valid" (tap)="login()">
+          Login</button>
+      </p>
+      <p class="pad">
+        <b style=" color: #187034;">
+          <u style=" color: #187034;">Forgot Password?</u>
+        </b>
+      </p>
+
+    </ion-list>
+
+    <ion-footer>
+
+      <p class="pad">
+        <b style=" color: white;">
+          <p style=" color: white;">Don't have an account ? 
+            <u (tap)="signup()" tappable style=" color: #30aeff;">Sign Up</u>
+          </p>
+        </b>
+      </p>
+
+    </ion-footer>
+
+
+  </form>
+</ion-content>

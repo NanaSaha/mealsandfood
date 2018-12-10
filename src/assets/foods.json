@@ -1,0 +1,66 @@
+{
+    "items": [
+        {
+            "name": "Fruits & Vegetables",
+            "children": [
+                {
+                    
+                    "name": "Mangoes",
+                    "information": "Dummy Text Dummy Text.",
+                    "price": "GHC15"
+                },
+                {
+                    "name": "Oranges",
+                    "information": "Dummy Text Dummy Text.",
+                    "price": "GHC30"
+                }
+            ]
+        },
+       
+        {
+            "name": "Beverages",
+            "children": [
+                {
+                    "name": "Cocoa Drink",
+                    "information": "Dummy Text Dummy Text.",
+                    "price": "GHC12"
+                },
+                { "name": "Mango Juice",
+                    "information": "Dummy Text Dummy Text.",
+                    "price": "GHC7"
+                }
+            ]
+        },
+        {
+            "name": "Meat & Fish",
+            "children": [
+                {
+                    "name": "Goat",
+                    "information": "Dummy Text Dummy Text.",
+                    "price": "GHC34"
+                },
+                {
+                    "name": "Tilapia",
+                    "information": "Dummy Text Dummy Text.",
+                    "price": "GHC65"
+                }
+            ]
+        },
+        {
+            "name": "Root Crops & Plantains",
+            "children": [
+                {
+                    "name": "Plantain",
+                    "information": "Dummy Text Dummy Text.",
+                    "price": "GHC45"
+                },
+                {
+                    "name": "Cassava",
+                    "information": "Dummy Text Dummy Text.",
+                    "price": "GHC10"
+                }
+            ]
+        }
+    
+    ]
+}

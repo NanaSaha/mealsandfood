@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Enter Your Address</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding >
+    <form [formGroup]="addForm">   
+  <br>
+  <ion-item>
+    <ion-label stacked>Address Name</ion-label>
+    <ion-input type="text" placeholder="Address Name" formControlName="address_name" name="address_name" [(ngModel)]="address.address_name" [class.invalid]="!addForm.controls.address_name.valid && (addForm.controls.address_name.dirty || submitAttempt)"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked> Area Landmark</ion-label>
+    <ion-input type="text" placeholder="Area Landmark" formControlName="landmark" name="landmark" [(ngModel)]="address.landmark" [class.invalid]="!addForm.controls.landmark.valid && (addForm.controls.landmark.dirty || submitAttempt)"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label stacked>Directions</ion-label>
+      <ion-input type="text" placeholder="Directions" formControlName="directions" name="directions" [(ngModel)]="address.directions" [class.invalid]="!addForm.controls.directions.valid && (addForm.controls.directions.dirty || submitAttempt)"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label stacked> Additional Direction (Optional)</ion-label>
+      <ion-input type="text" placeholder="Additional Instructions" formControlName="additional_instructions"  name="additional_instructions" [(ngModel)]="address.additional_instructions" [class.invalid]="!addForm.controls.additional_instructions.valid && (addForm.controls.additional_instructions.dirty || submitAttempt)"></ion-input>
+    </ion-item>
+  
+  </form> 
+</ion-content>
+
+<ion-footer>
+    <p>
+        <button ion-button color="secondary" class="button button-dark customBtn" [disabled]="!this.addForm.valid" (tap)="save_address()"> Save Address</button>
+      </p>
+</ion-footer>

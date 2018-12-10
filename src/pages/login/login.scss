@@ -1,0 +1,90 @@
+page-login {
+
+
+    .margin{
+  
+          margin-left:60%; 
+      }
+       .margin-l{
+          
+         margin-left: 35%; 
+      }
+  
+          .margin-r{
+          
+         margin-right: 60px; 
+      }   
+  
+  .background{
+  
+   /* The image used */
+    background-image: url("../assets/imgs/login.png");
+    
+     
+      height: 100%;
+  
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      align-content: center;
+      text-align:center;
+  
+      }    
+  
+         .pad{
+  
+          text-align:center;    
+  
+      }
+  
+  
+  .button.customBtn{
+      // width:340px;
+       width: 80%;
+        left: 0%;
+  } 
+  
+   .main-view{
+        height: 100%;
+  
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      align-content: center;
+      text-align:center;
+      // background: transparent;
+      //  opacity: .8;
+        background-image: url("../assets/imgs/box.png");
+      //  background-color: white;
+    }
+  
+  
+   ion-item.item {
+        width: 80%;
+        
+        left: 10%;
+          // height: 100px;
+          // -moz-border-radius: 50px;
+          // -webkit-border-radius: 50px;
+          // border-radius: 10px;
+          // margin-bottom: 10px;
+      // width: 70%;
+      //  align-content: center;
+      // text-align:center;
+      // align-items: center;
+      // padding-left: 20%;
+      //border:solid 100px black;
+      // background-color: black;
+      // opacity: .7;
+      //  position : absolute;
+  
+  // background-color: transparent !important;
+  // background: transparent !important;
+  
+       
+  }
+  
+  }
+  

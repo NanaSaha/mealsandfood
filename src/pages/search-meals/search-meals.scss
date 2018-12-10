@@ -1,0 +1,74 @@
+page-search-meals {
+
+
+    #background-image{
+
+        background-image: url("../assets/imgs/undraw.svg");
+        height: 50%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        // align-content: center;
+        // text-align:center;
+      }
+
+
+      .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+        top: -2px;
+        bottom: auto;
+        background-position: left 0 top 0;
+        height: 0px;
+      }
+
+    .pad{
+
+        align-content: center;
+        align-items: center;
+        text-align:center;
+  
+      }
+
+      .ash{
+        background-color: #f7f2f2;
+        
+    }
+
+    .item-block {
+        margin: 0;
+        padding: 0;
+        padding-left: 5%;
+        text-align: initial;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        overflow: hidden;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        width: 85%;
+        min-height: 4.4rem;
+        border: 0;
+        font-weight: normal;
+        line-height: normal;
+        text-decoration: none;
+        color: inherit;
+        margin-left: 10%;
+        border-radius: 6px;
+    }
+
+
+    .ionic-selectable {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        max-width: 100%;
+    }
+
+}

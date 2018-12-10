@@ -1,0 +1,50 @@
+page-sliders {
+
+    .background{
+      // background-color: #6c63ff
+    }
+
+    ion-card {
+      position: relative;
+      text-align: center;
+    }
+  
+    .card-title {
+      // position: absolute;
+      // top: 36%;
+      font-size: 30px;
+      width: 100%;
+      font-weight: bold;
+      color: #32db64;
+      float: right;
+      // padding-bottom: 50px;
+      padding-right: 15px;
+      text-align: right;
+    }
+  
+     .card-title1 {
+      // position: absolute;
+      // top: 36%;
+      font-size: 30px;
+      width: 100%;
+      font-weight: bold;
+      color: #187034;
+      float: right;
+      padding-top: -10%;
+      padding-right: 15px;
+      text-align: right;
+    }
+  
+    .card-subtitle {
+      font-size: 1.0em;
+      position: absolute;
+      // top: 52%;
+      width: 100%;
+      color: #fff;
+    }
+  
+  
+   
+  
+  }
+  

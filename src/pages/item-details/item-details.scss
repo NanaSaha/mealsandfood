@@ -1,0 +1,61 @@
+page-item-details {
+
+
+    // .background{
+
+    //     background-color: #f7f2f2;
+
+       
+    // }
+
+    .badge-md {
+        border-radius: 4px;
+        color: #fff;
+        background-color: green;
+    }
+    
+    .center{
+        text-align: center;
+    }
+
+    #font{
+        // font-size: 1.0rem !important
+        height: 2.6rem !important;
+        width: 1.6rem !important;
+    }
+
+    .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+        top: -2px;
+        bottom: auto;
+        background-position: left 0 top 0;
+        height: 0px;
+    }
+
+    .ionic-selectable {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        max-width: 100%;
+    }
+
+    .border{
+        border: 5px
+    }
+
+    .margin{
+        margin-top: 7px;
+        font-size: 20px;
+    }
+
+    .button.customBtn{
+        width: 100%;
+        margin-top: 0px;
+    }
+
+    .margin{
+
+        margin-right: 3%
+    }
+
+}

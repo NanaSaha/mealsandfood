@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Find Restaurants</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="ash">
+  <form [formGroup]="searchForm">
+  <br>
+  <br>
+  <ion-item>
+    <ion-label>Location</ion-label>
+    <ionic-selectable item-content [(ngModel)]="location" [items]="locations" itemValueField="id" itemTextField="location_name"
+      [canSearch]="true" (onChange)="locationChange($event)" formControlName="location_name" name="location_name" [class.invalid]="!searchForm.controls.location_name.valid && (searchForm.controls.location_name.dirty || submitAttempt)">
+    </ionic-selectable>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label>Meals</ion-label>
+    <ionic-selectable item-content [(ngModel)]="meal" [items]="meals" itemValueField="id" itemTextField="name" [canSearch]="true"
+      (onChange)="mealChange($event)" formControlName="name" name="name" [class.invalid]="!searchForm.controls.name.valid && (searchForm.controls.name.dirty || submitAttempt)">
+    </ionic-selectable>
+  </ion-item>
+
+
+  <p class="pad">
+    <button ion-button class="button button-dark customBtn" [disabled]="!this.searchForm.valid" color="danger" (tap)="restaurants()"> Find Restaurants </button>
+  </p>
+</form>
+</ion-content>
+
+<ion-footer id="background-image">
+</ion-footer>
+
+
+<!-- // A function to remember -->
+<!-- (click)="medClicked($event, item) -->

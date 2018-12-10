@@ -1,0 +1,79 @@
+page-restaurants {
+
+    .background{
+
+        // background-color: #f3f0f0;
+        background-color: #f7f2f2;
+
+        // background-image: url("../assets/imgs/back.svg");
+        //  height: 100%;
+        //  background-position: center;
+        // background-repeat: no-repeat;
+        // background-size: cover;
+    }
+
+    .center1{
+        text-align: center;
+       padding-top: 30%
+
+    }
+
+    .star{
+
+        margin: auto;
+        float: left;
+//   font-size: 60px; 
+ color : #f2b632;
+   }
+
+
+   .right{
+
+     text-align: right;
+   }
+
+    .wide{
+
+
+        width: 100%;
+        
+    }
+
+  ion-card.card {
+//   margin-top: 5px;
+  margin-bottom: -18px;
+}
+
+    .header{
+
+        color: white;
+    }
+
+
+     .ash{
+        background-color: #d6d6d6;
+        // color: white;
+    }
+
+    .right{
+        margin-top: 8%;
+        margin-left: 20%;
+        right: 10px;
+        // font-size: 150%;
+
+    }
+
+    .card-style{
+        // margin-top: 50%;
+        padding-top: 10%;
+        margin-left: 2%;
+        // right: 50px;
+    }
+    .card-style2{
+        // // margin-top: 50%;
+        // padding-top: 10%;
+        margin-left: 2%;
+        // right: 50px;
+    }
+
+}
