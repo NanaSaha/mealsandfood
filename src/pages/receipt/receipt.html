@@ -10,20 +10,63 @@
 
 <ion-content class="background" >
 
-    <ion-item no-lines class="center">
-        <p> Congratulations!! <br>Your Order has been received!</p>
+    <ion-list *ngIf="momo_network == 'mtn'">
+        <ion-item no-lines class="center" text-wrap>
+            <h3><b> Payment Request Successfully Sent</b></h3><br>
+            <p>You have 60 seconds to authorize payment on your mobile money handset</p>
+            
+          </ion-item>
+        <ion-item no-lines class="center">
+            <img src="assets/imgs/phone.svg" class="imgsize"  />
+        </ion-item>
+          
+       <ion-card>
+          <ion-item no-lines class="center">      
+              <b text-wrap> Please follow the instructions below to authorize payment</b><br>
+              <p text-wrap> 1. Dial *170# on your mobile handset</p> <br>
+              <p text-wrap> 2. Choose Option 6 [My Wallet]</p><br>
+              <p text-wrap>3. Choose Option 3 [My Approvals]</p><br>
+              <p text-wrap>4. Enter your MOMO pin</p><br>
+              <p text-wrap>5. Choose the pending transaction</p> <br>
+              <p text-wrap>6. Choose Option 1 to approve</p><br>
+            </ion-item>
+          </ion-card>
+
+      </ion-list>
+
+
+  <ion-list *ngIf="momo_network == 'tigo' || momo_network == 'airtel' || momo_network == 'vodafone'">
+    <ion-item no-lines class="center" text-wrap>
+        <p><b> Congratulations!!</b> <br>Your Order has been received!</p><br>
+        <h3 text-wrap ><b> A payment request was sent successfully to your mobile money number. Kindly complete & authorize the payment. </b></h3><br>
         
       </ion-item>
     <ion-item no-lines class="center">
-        <img src="assets/imgs/invoice2.svg" height="150px" width="250px" />
+        <img src="assets/imgs/phone.svg" class="imgsize"  />
       </ion-item>
 
-      <ion-item no-lines class="center">
+      <!-- <ion-item no-lines class="center" text-wrap>
           
-          <p>  Total Order is GHc {{getTotal()}}</p>
+          <p>  Total Order is GHc  {{getTotal() + 10}}</p>
           <p> Order ID is {{order_id}}</p>
-        </ion-item>
-
+        </ion-item> -->
+      </ion-list>
+    
+      <ion-list *ngIf="momo_network == ''">
+          <ion-item no-lines class="center" text-wrap>
+              <p> Congratulations!! <br>Your Order has been received!</p>
+              
+            </ion-item>
+          <ion-item no-lines class="center">
+              <img src="assets/imgs/invoice2.svg" class="imgsize"  />
+            </ion-item>
+      
+            <ion-item no-lines class="center">
+                
+                <p>  Total Order is GHc  {{getTotal() + 10}}</p>
+                <p> Order ID is {{order_id}}</p>
+              </ion-item>
+        </ion-list>
         
         
 
@@ -35,15 +78,15 @@
       <ion-row >
 
         <ion-col col-6>
-            <p>
+            <p class="pad">
                 <button ion-button color="secondary" outline class="button button-dark customBtn" (tap)="home()">Continue Order</button>
               </p>
 
         </ion-col>
 
         <ion-col col-6>
-            <p>
-                <button ion-button color="secondary" class="button button-dark customBtn" (tap)="order()">Check Order Status</button>
+            <p class="pad">
+                <button ion-button color="secondary" class="button button-dark customBtn" (tap)="order_history()">Check Order Status</button>
               </p>
 
         </ion-col>

@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar>
+  
+      <ion-title> <b> Order Details </b> </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content >
+    
+  
+     <!-- <ion-card-content>
+        <ion-card> -->
+  
+      <ion-list *ngFor="let q of list">
+  
+        <ion-list *ngFor=" let option of q.order_details">
+  
+          <ion-item no-lines>
+            <ion-thumbnail item-left>
+           <img *ngIf="option" [src]="option.meal_logo_url"  />
+            </ion-thumbnail>
+            <h4 text-wrap> Product name: {{ option.meals_name}}</h4>
+            <h4 text-wrap> Price: GHC {{ option.price}}</h4>
+            <h4 text-wrap>Quantity: {{ option.quantity}}</h4>
+          </ion-item>
+  
+        </ion-list>
+      </ion-list>
+      <br>
+      <!-- </ion-card>
+  
+      </ion-card-content> -->
+  </ion-content>
+
+  <ion-footer >
+      <p>
+        <button ion-button color="dark" class="button button-dark customBtn" (tap)="home()"> Order Again? </button>
+      </p>
+    
+    </ion-footer>

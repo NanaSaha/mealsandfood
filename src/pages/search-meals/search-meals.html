@@ -7,7 +7,7 @@
 </ion-header>
 
 
-<ion-content class="ash">
+<!-- <ion-content class="ash">
   <form [formGroup]="searchForm">
   <br>
   <br>
@@ -33,8 +33,45 @@
 </ion-content>
 
 <ion-footer id="background-image">
-</ion-footer>
+</ion-footer> -->
+
+<ion-content overflow-scroll='true' class="background">
+  
 
 
-<!-- // A function to remember -->
-<!-- (click)="medClicked($event, item) -->
+  <div class="padding">
+     <b class="pad">
+      <!-- <img src="assets/imgs/mnf.png" width="50%" /> -->
+      <img src="assets/icon/mlogo.png" width="50%" >
+    </b> 
+  </div>
+
+  <p>
+    <b>Find Restaurants</b>
+  </p>
+  <form [formGroup]="searchForm">
+  <ion-item >
+    <ion-label >Location</ion-label>
+    <ionic-selectable item-content [(ngModel)]="location" [items]="locations" itemValueField="id" itemTextField="location_name"
+      [canSearch]="true" (onChange)="locationChange($event)" formControlName="location_name" name="location_name" [class.invalid]="!searchForm.controls.location_name.valid && (searchForm.controls.location_name.dirty || submitAttempt)">
+    </ionic-selectable>
+  </ion-item>
+  <br>
+  <ion-item >
+    <ion-label >Meals</ion-label>
+    <ionic-selectable item-content [(ngModel)]="meal" [items]="meals" itemValueField="id" itemTextField="name" [canSearch]="true"
+      (onChange)="mealChange($event)" formControlName="name" name="name" [class.invalid]="!searchForm.controls.name.valid && (searchForm.controls.name.dirty || submitAttempt)">
+    </ionic-selectable>
+  </ion-item>
+
+  <br>
+  <br>
+  <div class="">
+    <b class="pad">
+      <button ion-button class="button button-dark customBtn" [disabled]="!this.searchForm.valid" color="danger" (tap)="restaurants()"> Find Restaurants </button>
+
+    </b>
+  </div>
+</form>
+
+</ion-content>

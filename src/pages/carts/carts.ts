@@ -29,7 +29,7 @@ export class CartsPage {
   address_user_id: any;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public apis: ApisProvider, public cartServ: CartService, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+  constructor(public toastCtrl: ToastController,public navCtrl: NavController, public navParams: NavParams, public apis: ApisProvider, public cartServ: CartService, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
 
     this.user_details = this.navParams.get("user_details")
     this.body = this.user_details
@@ -56,12 +56,29 @@ export class CartsPage {
       this.address_user_id = this.body2[0]
       console.log(this.body2)
       console.log(this.address_details)
-      console.log("USER ID " + this.address_user_id.resp_code )
+      console.log("USER ID " + this.address_user_id.user_id )
 
+    },
+  
+    (err) => {
+  
+      let alert = this.alertCtrl.create({
+        title: "",
+        subTitle: "Sorry, cant connect right now. Please try again!",
+        buttons: ['OK']
+      });
+      alert.present();
+
+      this.toastCtrl.create({
+        message: "Please check your internet connection",
+        duration: 5000
+      }).present();
+      loader.dismiss();
+      console.log(err);
     });
 
-    // retrieving all the cart items
 
+    // retrieving all the cart items
     this.cartList = cartServ.getAllCartItems();
     this.select = JSON.stringify(this.cartList)
     loader.dismiss();

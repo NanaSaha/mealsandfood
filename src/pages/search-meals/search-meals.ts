@@ -40,7 +40,7 @@ export class SearchMealsPage {
       this.locations = this.body
     });
 
-    this.apis.retrieve_all_meals().then((result) => {
+    this.apis.retrieve_all_menu().then((result) => {
       this.body1 = result;
       this.meals = this.body1
     });

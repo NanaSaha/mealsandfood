@@ -22,17 +22,25 @@ page-signup {
 
 .background{
 
- /* The image used */
-  background-image: url("../assets/imgs/login.png");
-   
-    height: 100%;
 
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    align-content: center;
-    text-align:center;
+//   background-image: url("../assets/imgs/login_img.png");
+   
+//     height: 100%;
+
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     align-content: center;
+//     text-align:center;
+
+    background: linear-gradient( rgba(0,0,0,0.5),
+    rgba(0, 0, 0, 0.5) ),
+    url(../assets/imgs/login_img.png)
+     no-repeat center center;
+
+     background-size: cover;
+     text-align:center;
+     height: 100%;
 
     }    
 
@@ -63,15 +71,6 @@ page-signup {
       background-image: url("../assets/imgs/box.png");
     //  background-color: white;
   }
-//    .overlay {
-//     position: fixed;
-//     top: 0;
-//     width: 100%;
-//     height: 100%;
-//     z-index: 1;
-//      opacity: .8;
-//     background-color: #000000;
-//   }
 
  ion-item.item {
 
@@ -79,15 +78,34 @@ page-signup {
       
       left: 10%;
 
-    //border:solid 100px black;
-    // background-color: black;
-    // opacity: .7;
-    //  position : absolute;
+}
 
-// background-color: transparent !important;
-// background: transparent !important;
+@media screen and (max-width: 599px) {
 
-     
+}
+
+
+@media screen and ( max-width: 1366px) and (min-width: 600px ) {
+
+
+    form, input, optgroup, select {
+        margin: 0;
+        font: inherit;
+        color: inherit;
+        padding-top: 20%;
+    }
+
+
+ h2 {
+  margin-top: 1.8rem;
+  font-size: 4.6rem;
+}
+
+p {
+margin-top: 1.8rem;
+font-size: 2.8rem;
+}
+
 }
 
 

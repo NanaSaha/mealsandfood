@@ -35,23 +35,30 @@
         <button ion-button color="kaya" class="button button-dark customBtn" [disabled]="!this.loginForm.valid" (tap)="login()">
           Login</button>
       </p>
+      
+
       <p class="pad">
-        <b style=" color: #187034;">
-          <u style=" color: #187034;">Forgot Password?</u>
-        </b>
+          <b style=" color: #187034;">
+              <p style=" color: #187034;">
+                  <a  (tap)="reset()" tappable style=" color: #187034;">Forgot Password?
+                  </a>
+              </p>
+          </b>
       </p>
 
     </ion-list>
 
     <ion-footer>
 
+
       <p class="pad">
-        <b style=" color: white;">
-          <p style=" color: white;">Don't have an account ? 
-            <u (tap)="signup()" tappable style=" color: #30aeff;">Sign Up</u>
-          </p>
+        <b style=" color: #32db64;">
+            <p style=" color: #32db64;">Don't have an account ?
+                <a (tap)="signup()" tappable style=" color: white;">Sign Up
+                </a>
+            </p>
         </b>
-      </p>
+    </p>
 
     </ion-footer>
 

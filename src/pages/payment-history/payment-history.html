@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Payment History</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="background">
+
+
+  <ion-list *ngIf="list?.length == 0">
+    <p class="textstyle"> No Payment History Found </p>
+  </ion-list>
+
+
+  <ion-list *ngFor="let item of list">
+
+    <!-- <ion-card> -->
+      <ion-item>
+        <ion-avatar item-start *ngIf=" item.mobile_wallet_network == 'mtn'">
+
+          <img src="assets/icon/mtn.png" />
+
+        </ion-avatar>
+        <ion-avatar item-start *ngIf=" item.mobile_wallet_network == 'vodafone'">
+
+          <img src="assets/icon/voda.png" />
+
+        </ion-avatar>
+
+        <ion-avatar item-start *ngIf=" item.mobile_wallet_network == 'airtel'">
+
+          <img src="assets/icon/airtel.png" />
+
+        </ion-avatar>
+
+        <ion-avatar item-start *ngIf=" item.mobile_wallet_network == 'tigo'">
+
+          <img src="assets/icon/tigo.png" />
+
+        </ion-avatar>
+
+        <h2 text-wrap>
+          Reference ID: {{ item.reference}}
+        </h2>
+        <h2 text-wrap>
+          OrderID: {{ item.order_id}}
+        </h2>
+        <h2 text-wrap>
+          Amount: GHc {{ item.amount}}
+        </h2>
+        <h2 text-wrap *ngIf=" item.status == true">
+          Status:Payment Successful
+        </h2>
+        <h2 text-wrap *ngIf=" item.status == false">
+          Status: Pending...
+          </h2>
+        <h2 text-wrap>
+          Date: {{ item.created_at | date: 'medium'}}
+        </h2>
+
+      </ion-item>
+    <!-- </ion-card> -->
+
+    <!-- <ion-card-content>
+
+      <ion-grid>
+        <ion-row>
+
+          <ion-col col-2 *ngIf=" item.mobile_wallet_network == 'mtn'">
+            <h4>
+              <img src="assets/icon/mtn.png" height="100px" width="100px" />
+            </h4>
+          </ion-col>
+          <ion-col col-2 *ngIf=" item.mobile_wallet_network == 'airtel'">
+            <h4>
+              <img src="assets/icon/airtel.png" height="100px" width="100px" />
+            </h4>
+          </ion-col>
+          <ion-col col-2 *ngIf=" item.mobile_wallet_network == 'vodafone'">
+            <h4>
+              <img src="assets/icon/voda.png" height="100px" width="800px" />
+            </h4>
+          </ion-col>
+          <ion-col col-2 *ngIf=" item.mobile_wallet_network == 'tigo'">
+            <h4>
+              <img src="assets/icon/tigo.png" height="100px" width="100px" />
+            </h4>
+          </ion-col>
+
+          <ion-col col-10>
+            <ion-item text-wrap>
+
+              <h4>Transacton ID: {{ item.reference}}</h4>
+              <h4>Order ID: {{ item.order_id}}</h4>
+              <h4>Amount: {{ item.amount}}</h4>
+              <h4>Transactiion Date: {{ item.created_at | date: 'medium'}}</h4>
+            </ion-item>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+
+    </ion-card-content> -->
+  </ion-list>
+
+
+</ion-content>

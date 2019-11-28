@@ -12,6 +12,7 @@ import { ApisProvider } from '../../providers/apis/apis';
 export class RestaurantsPage {
   location_id: any;
   body: any;
+  fakeUsers: Array<any> = new Array(5);
   restaurant_details:any;
   raw: any;
   raw1: any;

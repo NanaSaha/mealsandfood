@@ -25,6 +25,7 @@ export class ItemDetailsPage {
   count: any;
   restaurant_id: any;
   user_details: any;
+  fakeUsers: Array<any> = new Array(5);
 
   constructor(public apis: ApisProvider,public cartServ: CartService,public loadingCtrl: LoadingController,public alertCtrl: AlertController,private http: Http,public navCtrl: NavController, public navParams: NavParams) {
     this.user_details = this.navParams.get("user_details")
@@ -61,11 +62,11 @@ export class ItemDetailsPage {
   addTocart(item) {
 
     console.log("These are the items " + item);
+    console.log("MEAL QUANTITYY " + item.quantity);
     let pro = JSON.stringify(item);
     console.log("NOw strign " + pro);
-    this.cartServ.addItem(item, 0);
+    this.cartServ.addItem(item, item.quantity);
 
-    console.log(this.cartServ.addItem(item, 0));
     console.log(this.cartServ.getAllCartItems());
 
     this.count = this.cartServ.getAllCartItems().length
@@ -92,7 +93,7 @@ export class ItemDetailsPage {
     } else {
       let alert = this.alertCtrl.create({
         title: 'Error',
-        subTitle: 'Quantity is 1, you cant reduce it, if you want to remove, please press remove button.',
+        subTitle: 'Quantity is 1, you cant reduce it.',
         buttons: ['Ok']
       });
       alert.present();

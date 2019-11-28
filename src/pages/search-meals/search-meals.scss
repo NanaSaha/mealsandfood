@@ -1,42 +1,229 @@
 page-search-meals {
 
 
-    #background-image{
+    // #background-image{
 
-        background-image: url("../assets/imgs/undraw.svg");
-        height: 50%;
+    //     background-image: url("../assets/imgs/undraw.svg");
+    //     height: 50%;
+    //     background-position: center;
+    //     background-repeat: no-repeat;
+    //     background-size: cover;
+       
+    //   }
+
+
+    //   .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+    //     top: -2px;
+    //     bottom: auto;
+    //     background-position: left 0 top 0;
+    //     height: 0px;
+    //   }
+
+    // .pad{
+
+    //     align-content: center;
+    //     align-items: center;
+    //     text-align:center;
+  
+    //   }
+
+    //   .ash{
+    //     background-color: #f7f2f2;
+        
+    // }
+
+    // .item-block {
+    //     margin: 0;
+    //     padding: 0;
+    //     padding-left: 5%;
+    //     text-align: initial;
+    //     display: -webkit-box;
+    //     display: -webkit-flex;
+    //     display: -ms-flexbox;
+    //     display: flex;
+    //     overflow: hidden;
+    //     -webkit-box-align: center;
+    //     -webkit-align-items: center;
+    //     -ms-flex-align: center;
+    //     align-items: center;
+    //     -webkit-box-pack: justify;
+    //     -webkit-justify-content: space-between;
+    //     -ms-flex-pack: justify;
+    //     justify-content: space-between;
+    //     width: 85%;
+    //     min-height: 4.4rem;
+    //     border: 0;
+    //     font-weight: normal;
+    //     line-height: normal;
+    //     text-decoration: none;
+    //     color: inherit;
+    //     margin-left: 10%;
+    //     border-radius: 6px;
+    // }
+
+
+    // .ionic-selectable {
+    //     display: -webkit-box;
+    //     display: -webkit-flex;
+    //     display: -ms-flexbox;
+    //     display: flex;
+    //     max-width: 100%;
+    // }
+
+    // @media screen and (max-width: 599px) {
+
+    // }
+    
+    
+    // @media screen and ( max-width: 1366px) and (min-width: 600px ) {
+        
+    //     form {
+    //         margin: 0;
+    //         font: inherit;
+    //         color: inherit;
+    //         padding-top: 10%;
+    //         width: 80%;
+    //         height: 50%;
+    //         text-align: center;
+    //         margin-left: 10%;
+    //     }
+
+    //     .button.customBtn
+    //     {     
+    //         width: 50%;
+    //         height: 65px;
+    //         font-size: 24px;
+    //     }
+
+        
+        
+     
+    
+    
+    //  h2 {
+    //   margin-top: 1.8rem;
+    //   font-size: 4.6rem;
+    // }
+    
+    // p {
+    // margin-top: 1.8rem;
+    // font-size: 2.8rem;
+    // }
+    
+    // }
+
+    .background
+    {
+        background-image: url("../assets/imgs/white_background.png");  
+        height: 100%;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        // align-content: center;
-        // text-align:center;
-      }
-
-
-      .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
-        top: -2px;
-        bottom: auto;
-        background-position: left 0 top 0;
-        height: 0px;
-      }
-
-    .pad{
-
         align-content: center;
-        align-items: center;
         text-align:center;
-  
-      }
+        opacity: 1.0;
+     }    
 
-      .ash{
-        background-color: #f7f2f2;
-        
+     .padding
+     {
+        padding-top: 30%;    
+     }
+
+     .pad
+     {
+       
+        text-align:center;    
+     }
+
+    .button.customBtn
+    {     
+      width: 80%; 
     }
+
+
+    @media screen and (max-width: 719px) {
+
+        .padding
+        {
+           padding-top: 15%;    
+        }
+   
+        .pad
+        {
+          
+           text-align:center;    
+        }
+   
+       .button.customBtn
+       {     
+         width: 80%; 
+       }
+
+    }
+
+
+    @media screen and ( max-width: 1366px) and (min-width: 768px ) {
+
+        .padding
+        {
+           padding-top: 20%;    
+        }
+   
+        .pad
+        {
+          
+           text-align:center;    
+        }
+
+        p {
+            // margin-top: 1.8rem;
+            font-size: 2.3rem;
+        }
+   
+        .button.customBtn
+        {     
+          width: 50%; 
+        }
+ 
+  .item-block {
+     margin: 0;
+     padding: 0;
+     text-align: initial;
+     display: -webkit-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: flex;
+     overflow: hidden;
+     -webkit-box-align: center;
+     -webkit-align-items: center;
+     -ms-flex-align: center;
+     align-items: center;
+     -webkit-box-pack: justify;
+     -webkit-justify-content: space-between;
+     -ms-flex-pack: justify;
+     justify-content: space-between;
+     width: 50% !important;
+     min-height: 4.4rem;
+     border: 1;
+     font-weight: normal;
+     line-height: normal;
+     text-decoration: none;
+     color: inherit;
+     text-align: center;
+     margin-left: 25% !important;
+     } 
+
+    }
+
+    a {
+        color: #FF2D48;
+        text-decoration: none;
+    }
+
 
     .item-block {
         margin: 0;
         padding: 0;
-        padding-left: 5%;
         text-align: initial;
         display: -webkit-box;
         display: -webkit-flex;
@@ -51,24 +238,61 @@ page-search-meals {
         -webkit-justify-content: space-between;
         -ms-flex-pack: justify;
         justify-content: space-between;
-        width: 85%;
+        width: 80%;
         min-height: 4.4rem;
-        border: 0;
+        border: 1;
         font-weight: normal;
         line-height: normal;
         text-decoration: none;
         color: inherit;
+        text-align:center; 
         margin-left: 10%;
-        border-radius: 6px;
+    }
+
+    ion-input, ion-textarea {
+        position: relative;
+        display: block;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        width: 100%;
+        border: 2px solid #781318 !important;
+        border-radius: 6px !important;
     }
 
 
-    .ionic-selectable {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        max-width: 100%;
+    .item-cover {
+        left: 0;
+        top: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        cursor: pointer;
+        border: 2px solid !important;
+        border-radius: 6px !important;
     }
+    
+    .item-input .label-ios, .item-select .label-md, .item-datetime .label-md {
+        color: #781318 !important;
+    }
+
+
+    ion-label {
+        margin: 0;
+        display: block;
+        overflow: hidden;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        font-size: inherit;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-right: 40%;
+    }
+
+
 
 }

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav,Events, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -12,19 +12,27 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: string = "SlidersPage";
+ rootPage: string = "SlidersPage";
+  //rootPage: string = "LoginPage";
+  
+  customer_details: any;
 
   pages: Array<{title: string, component: any, icon: string}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public event: Events,public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
+    this.event.subscribe('customer_details',(data)=>{
+      this.customer_details = data
+      console.log(data);
+    });
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: "HomePage", icon: "ios-home"},
-      { title: 'Orders', component: "HomePage" , icon: "md-cart"},
-      { title: 'Settings', component: "HomePage" , icon: "md-settings"},
-      { title: 'Payments', component: "HomePage", icon: "md-cash" } 
+      { title: 'Orders', component: "OrderHistoryPage" , icon: "md-cart"},
+      { title: 'Payments', component: "PaymentHistoryPage", icon: "md-cash" } ,
+      { title: 'Lists', component: "ListPage" , icon: "ios-pizza"},
+      // { title: 'Payments', component: "HomePage", icon: "md-cash" } 
     ];
 
   }
@@ -41,6 +49,9 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    // this.nav.setRoot(page.component);
+    this.nav.setRoot(page.component, {'customer_details': this.customer_details});
   }
+
+
 }

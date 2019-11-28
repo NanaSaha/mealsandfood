@@ -26,8 +26,9 @@ export class MealMenuPage {
   user_details: any;
   params: any;
   menus: any;
+  fakeUsers: Array<any> = new Array(5);
 
-  constructor(public apis: ApisProvider, public cartServ: CartService, public loadingCtrl: LoadingController, private http: Http, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public apis: ApisProvider, public cartServ: CartService, public loadingCtrl: LoadingController, private http: Http, public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController) {
     this.user_details = this.navParams.get("user_details")
     this.restaurant_id = this.navParams.get("restaurant_id")
     console.log('restaurant_id ID retrieved:', this.restaurant_id);
@@ -49,17 +50,23 @@ export class MealMenuPage {
 
     this.apis.fetch_restaurant_menus(this.restaurant_id).then((result) => {
       this.body = result;
+      if (this.body != null){
       this.body2 = result[0];
       this.menu_details = JSON.stringify(this.body)
       this.restaurant_details = JSON.stringify(this.body2)
-      this.restaurant_name = this.body2.name
-      this.restaurant_logo = this.body2.logo
-      this.restaurant_description = this.body2.descriptions
+      this.restaurant_name = this.body2.restaurant_name
+      this.restaurant_logo = this.body2.restaurant_logo
+      this.restaurant_description = this.body2.restaurant_description
       console.log("-------------------------------------------------------")
       console.log(this.body)
       console.log(JSON.stringify(this.body))
       console.log("Information", this.body )
       console.log("-------------------------------------------------------")
+      }
+      else {
+        this.body == 0
+        console.log("bodty is 0000" )
+      }
     });
 
 
@@ -85,14 +92,14 @@ export class MealMenuPage {
 
   toggleSection(i) {
     console.log("Lets see Index", i)
-    console.log(this.body[i].open)
+    
     this.body[i].open = !this.body[i].open;
   }
 
-  toggleItem(j) {
+  toggleItem(i,j) {
     console.log("Lets see I J", j)
     // this.information[i].children[j].open = !this.information[i].children[j].open;
-    this.body[j].open = !this.body[j].open;
+    this.body[i].meals[j].open = !this.body[i].meals[j].open;
   }
 
 
@@ -101,14 +108,14 @@ export class MealMenuPage {
     this.navCtrl.push("CartsPage", { user_details: this.user_details })
   }
 
-  addTocart(item) {
+  addTocart(meal_item) {
 
-    console.log("These are the items " + item);
-    let pro = JSON.stringify(item);
+    console.log("These are the items " + meal_item);
+    console.log("MEAL QUANTITYY " + meal_item.quantity);
+    let pro = JSON.stringify(meal_item);
     console.log("NOw strign " + pro);
-    this.cartServ.addItem(item, 0);
+    this.cartServ.addItem(meal_item, meal_item.quantity);
 
-    console.log("LETS SEE ADD ITEM" + this.cartServ.addItem(item, 1));
     console.log("LETS SEE ALL CART ITEM" + this.cartServ.getAllCartItems());
     console.log(this.cartServ.getAllCartItems());
 
@@ -122,6 +129,27 @@ export class MealMenuPage {
 
 
 
+  }
+
+
+ 
+
+
+  quantityAdd(item) {
+    this.cartServ.quantityPlus(item);
+  }
+
+  quantityMinus(item) {
+    if (item.quantity > 1) {
+      this.cartServ.quantityMinus(item);
+    } else {
+      let alert = this.alertCtrl.create({
+        title: 'Error',
+        subTitle: 'Quantity is 1, you cant reduce it.',
+        buttons: ['Ok']
+      });
+      alert.present();
+    }
   }
 
 

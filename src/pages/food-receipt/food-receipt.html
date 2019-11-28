@@ -1,0 +1,55 @@
+
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Receipt</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content class="background" >
+  
+      <ion-item no-lines class="center">
+          <p> Congratulations!! <br>Your Order has been received!</p>
+          
+        </ion-item>
+      <ion-item no-lines class="center">
+          <img src="assets/imgs/invoice2.svg" class="imgsize" />
+        </ion-item>
+  
+        <ion-item no-lines class="center">
+            
+            <p>  Total Order is GHc {{getTotal()}}</p>
+            <p> Order ID is {{order_id}}</p>
+          </ion-item>
+  
+          
+          
+  
+  </ion-content>
+  
+  <ion-footer>
+      <div >
+  
+        <ion-row >
+  
+          <ion-col col-6>
+              <p>
+                  <button ion-button color="secondary" outline class="button button-dark customBtn" (tap)="home()">Continue Order</button>
+                </p>
+  
+          </ion-col>
+  
+          <ion-col col-6>
+              <p>
+                  <button ion-button color="secondary" class="button button-dark customBtn" (tap)="order_history()">Check Order Status</button>
+                </p>
+  
+          </ion-col>
+  
+        </ion-row>
+      </div>
+  
+     
+    </ion-footer>

@@ -1,0 +1,116 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Order Tracking <ion-icon name="refresh" class="right" tappable (click)="refresh()"></ion-icon> </ion-title>
+   
+    <!-- <ion-row>
+      <ion-col col-7>
+        <p>Order Tracking
+          </p>
+
+      </ion-col>
+      <ion-col col-5>
+        <ion-icon name="refresh" class="right" ></ion-icon> 
+      </ion-col>
+    </ion-row>-->
+  </ion-navbar> 
+
+</ion-header>
+
+
+<ion-content class="background">
+  <p text-wrap>
+    Thank you for ordering from
+    <b>M&F</b>
+  </p>
+
+  <h4 class="margup">
+    Track Order
+  </h4>
+
+  <ion-row>
+
+    <ion-col col-4 text-wrap>
+      <ion-item no-lines>
+        <!-- <b style="font-size: 100%;color: #000000;">10:00 AM</b>
+        <p style="font-size: 50%">Order Time</p> -->
+
+      </ion-item>
+    </ion-col>
+    <ion-col col-4 class="border" text-wrap>
+      <ion-item no-lines>
+
+        <b style="font-size: 100%;color: #000000;" text-wrap>Order ID</b>
+        <p style="font-size: 70%" text-wrap>{{order_id}}</p>
+
+        <!-- <img src="assets/icon/tracking_icon.png"> -->
+      </ion-item>
+    </ion-col>
+    <ion-col col-4 text-wrap>
+      <ion-item no-lines>
+        <!-- <b style="font-size: 100%;color: #000000;">10:30 AM</b>
+        <p style="font-size: 50%">Est Delivery Time</p> -->
+
+
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+
+
+
+  <div class="container" >
+    <ul class="progressbar">
+      <li  [class.active]= "status == true && is_preparing == false">Received
+          <div class="border1" *ngIf="status == true && is_preparing == false" >
+              <img src="assets/icon/order_received.png" width="20%"> <br>
+              <b style="font-size: 100%;color: #000000;">Order Received</b>
+              <p style="font-size: 70%">Your order has been received</p>
+      
+          </div>
+      </li>
+
+      <li [class.active]= "is_preparing == true && on_way == false" >Preparing
+          <div class="border2" *ngIf="is_preparing == true && on_way == false">
+              <img src="assets/icon/order_received.png" width="20%"> <br>
+              <b style="font-size: 100%;color: #000000;">Preparing Order</b>
+              <p style="font-size: 70%" text-wrap>Your order is being prepared for delivery</p>
+      
+          </div>
+      </li>
+      <li [class.active]= "on_way == true && delivered == fals">On the way
+          <div class="border2" *ngIf="on_way == true && delivered == false" >
+              <img src="assets/icon/order_received.png" width="20%"> <br>
+              <b style="font-size: 100%;color: #000000;">Yaayyy!</b>
+              <p style="font-size: 70%">Your order is on the way.</p>
+      
+          </div>
+      </li>
+      <li [class.active]= "delivered == true" >Delivered
+          <div class="border2" *ngIf="delivered == true" text-wrap>
+              <img src="assets/icon/order_received.png" width="20%"> <br>
+              <b style="font-size: 100%;color: #000000;" text-wrap>Enjoy your meal</b>
+              <p style="font-size: 70%" text-wrap>Your order has been delivered</p>
+      
+          </div>
+      </li>
+     
+    </ul> 
+   
+  </div>
+
+
+  <p>
+      <button ion-button color="dark" class="button button-dark customBtn" (tap)="home()"> Continue Order </button>
+    </p>
+
+  
+
+
+</ion-content>
+<!-- <ion-footer >
+    <p>
+      <button ion-button color="dark" class="button button-dark customBtn" (tap)="home()"> Continue Order </button>
+    </p>
+  
+  </ion-footer> -->

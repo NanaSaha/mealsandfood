@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-navbar>
+  
+      <ion-title> <b>Food Order Details </b> </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content >
+
+  
+      <ion-list *ngFor="let q of list">
+  
+        <ion-list *ngFor=" let option of q.order_details">
+  
+          <ion-item no-lines>
+            <ion-thumbnail item-left>
+           <img *ngIf="option" [src]="option.food_logo_url"  />
+            </ion-thumbnail>
+            <!-- <h4 text-wrap style="color: #781318"> Product name:<p>{{ option.food_name}}</p></h4> 
+            <h4 text-wrap style="color: #781318"> Price:</h4> GHC {{ option.price}}
+            <h4 text-wrap style="color: #781318"> Special Requests:</h4> {{ option.requests}}
+            <h4 text-wrap style="color: #781318"> Specific Delivery Location:</h4> {{ option.new_location}} -->
+            <p text-wrap> Product name:{{ option.food_name}}</p> 
+            <p text-wrap> Price: GHC {{ option.price}}</p>
+              <p text-wrap > Special Requests: {{ option.requests}}</p>
+                <p text-wrap> Specific Delivery Location: {{ option.new_location}}</p>
+            
+          </ion-item>
+  
+        </ion-list>
+      </ion-list>
+      <br>
+      <!-- </ion-card>
+  
+      </ion-card-content> -->
+  </ion-content>
+
+  <ion-footer >
+      <p>
+        <button ion-button color="dark" class="button button-dark customBtn" (tap)="home()"> Order Again? </button>
+      </p>
+    
+    </ion-footer>

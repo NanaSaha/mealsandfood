@@ -31,6 +31,8 @@ export class CheckoutPage {
   orders: any;
   orderJson: any;
   address_user_id: any;
+  different_location: any;
+  yesorno: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public apis: ApisProvider, public cartServ: CartService, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
     this.user_details = this.navParams.get("user_details")
@@ -126,7 +128,7 @@ export class CheckoutPage {
       }
       console.log("ORDER ID BEFOR PASSING IT " + this.params2)
 
-      this.apis.display_orders(this.params2).then((result) => {
+      this.apis.order_details(this.params2).then((result) => {
 
         console.log('LETS RESULTS ');
         console.log(result);
@@ -139,7 +141,8 @@ export class CheckoutPage {
         loader.dismiss();
 
 
-        this.navCtrl.push("ReceiptPage", { order_id: this.order_id, user_details: this.user_details })
+        // this.navCtrl.push("ReceiptPage", { order_id: this.order_id, user_details: this.user_details })
+        this.navCtrl.push("PaymentPage", { order_id: this.order_id, user_details: this.user_details })
       });
 
     });

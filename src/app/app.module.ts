@@ -8,7 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { Geolocation } from '@ionic-native/geolocation';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { ApisProvider,CartService } from '../providers/apis/apis';
+import { ApisProvider,CartService ,FoodCartService} from '../providers/apis/apis';
+// import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @NgModule({
   declarations: [
@@ -28,12 +29,14 @@ import { ApisProvider,CartService } from '../providers/apis/apis';
    
   ],
   providers: [
+    
     StatusBar,
     SplashScreen,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApisProvider,
-    CartService
+    CartService,
+    FoodCartService
   ]
 })
 export class AppModule {}

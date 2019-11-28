@@ -13,9 +13,9 @@
     <ion-row class="container">
       <ion-col col-9>
         <h2>Delivery Address</h2>
-        <p style="font-size: 13px !important">{{item.address_name}}
-          <br>{{item.landmark}}
-          <br>{{mobile_number}}</p>
+        <p style="font-size: 13px !important" text-wrap>{{item.address_name}}
+          <br text-wrap>{{item.landmark}}
+          <br text-wrap>{{mobile_number}}</p>
       </ion-col>
       <ion-col col-3>
         <button ion-button color="secondary" outline (tap)="edit(item)"> Edit</button>
@@ -26,13 +26,44 @@
 
   <ion-item no-lines *ngFor="let item of cartList">
     <ion-row class="container">
-      <ion-col col-9>
-        <h2> {{ item.meals_name}}</h2>
+      <ion-col col-9 text-wrap>
+        <h2 text-wrap> {{ item.meal_name}}</h2>
         <p style="font-size: 13px !important">Quantity x {{ item.quantity}}
         </p>
       </ion-col>
       <ion-col col-3 class="move-down">
         <p>Ghc {{ item.price}}</p>
+      </ion-col>
+    </ion-row>
+
+  </ion-item>
+
+  <ion-item>
+    <ion-row>
+
+
+      <ion-col col-9>
+        <p>Subtotal</p>
+
+      </ion-col>
+      <ion-col col-3>
+        <p>Ghc {{getTotal()}}</p>
+      </ion-col>
+
+      <ion-col col-9>
+        <p>Delivery Fee</p>
+
+      </ion-col>
+      <ion-col col-3>
+        <p>Ghc 10</p>
+      </ion-col>
+
+      <ion-col col-9>
+        <p>Total Amount</p>
+
+      </ion-col>
+      <ion-col col-3>
+        <p>Ghc {{getTotal() + 10}} </p>
       </ion-col>
     </ion-row>
 
@@ -55,63 +86,93 @@
   </ion-item>
 
   <ion-item no-lines>
+    <h2>
+      <b>Specify Delivery Location</b>
+    </h2>
+  </ion-item>
+
+  <!-- <ion-list>
+  
+    <ion-item no-lines>
+        <ion-label>
+          Default Location</ion-label>
+        <ion-checkbox [(ngModel)]="card" (ionChange)="updateCredit()"></ion-checkbox>
+      </ion-item> 
+
+  <ion-item no-lines>
+      <ion-label>
+        Change Delivery Location</ion-label>
+      <ion-checkbox [(ngModel)]="different_location" ></ion-checkbox>
+    </ion-item>
+  </ion-list> 
+
+  <ion-list *ngIf="different_location">
+  <ion-item no-lines>
+    <h2>New Delivery Location</h2>
+  </ion-item>
+
+  <ion-item >
+    <ion-input type="text" placeholder="Enter Your new Delivery Location"></ion-input>
+  </ion-item>
+
+</ion-list> -->
+
+
+  <ion-list radio-group [(ngModel)]="yesorno">
+
+    <ion-item no-lines>
+
+      <ion-label>
+        Default Location</ion-label>
+      <ion-radio checked="true" value="N"></ion-radio>
+
+    </ion-item>
+
+
+    <ion-item no-lines>
+      <ion-label>
+        Change Delivery Location</ion-label>
+      <ion-radio value="Y"></ion-radio>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="yesorno == 'Y'">
+    <ion-item no-lines>
+      <h2>New Delivery Location</h2>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Enter Your new Delivery Location"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <!-- <ion-item no-lines>
     <h2>Pay with</h2>
   </ion-item>
 
   <ion-list>
-    <ion-item no-lines>
-      <ion-label>
-        <ion-icon ios="ios-card" md="md-card"></ion-icon> Credit Card</ion-label>
-      <ion-checkbox [(ngModel)]="card" (ionChange)="updateCredit()"></ion-checkbox>
-    </ion-item>
-
+  
     <ion-item no-lines>
         <ion-label>
           <ion-icon ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon> Mobile Money</ion-label>
         <ion-checkbox [(ngModel)]="card" (ionChange)="updateCredit()"></ion-checkbox>
-      </ion-item>
+      </ion-item> -->
 
-    <ion-item no-lines>
+  <!-- <ion-item no-lines>
       <ion-label>
         <ion-icon ios="ios-cash" md="md-cash"></ion-icon> Cash on delivery</ion-label>
       <ion-checkbox></ion-checkbox>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
 
 
-  <ion-item>
-    <ion-row>
-      <!-- <ion-col col-9>
-        <p>Subtotal</p>
 
-      </ion-col>
-      <ion-col col-3>
-        <p>Ghc 20.00</p>
-      </ion-col>
-
-      <ion-col col-9>
-        <p>Delivery Fee</p>
-
-      </ion-col>
-      <ion-col col-3>
-        <p>Ghc 5.00</p>
-      </ion-col> -->
-
-      <ion-col col-9>
-        <p>Total Amount</p>
-
-      </ion-col>
-      <ion-col col-3>
-        <p>Ghc {{getTotal()}}</p>
-      </ion-col>
-    </ion-row>
-
-  </ion-item>
 
 </ion-content>
 
 <ion-footer>
   <p>
-    <button ion-button color="secondary" class="button button-dark customBtn" (tap)="checkout()"> Place Order</button>
+    <button ion-button color="secondary" class="button button-dark customBtn" (tap)="checkout()">Proceed to Pay</button>
   </p>
 </ion-footer>

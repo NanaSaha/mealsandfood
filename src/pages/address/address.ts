@@ -35,6 +35,7 @@ export class AddressPage {
   body: any;
   user_id: any;
   user_details: any;
+  from_checkout: any;
   
 
   address = { address_name: '', landmark: '', directions: '', additional_instructions: '' }
@@ -42,6 +43,7 @@ export class AddressPage {
 
   constructor(public toastCtrl: ToastController, public apis: ApisProvider, public _form: FormBuilder, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public http: Http) {
     this.user_details = this.navParams.get("user_details")
+    this.from_checkout = this.navParams.get("from_checkout")
     
 
     this.body = this.user_details
@@ -102,24 +104,10 @@ export class AddressPage {
         this.retrieved = this.body1
         this.retrieved = JSON.stringify(this.body1)
       });
-
-    //   let alert = this.alertCtrl.create({
-    //     title: "Oopps!",
-    //     subTitle: "UPDATE TABLE",
-    //     buttons: ['OK']
-    //   });
-    //   alert.present();
-      
+  
      }
 
     else {
-
-      // let alert = this.alertCtrl.create({
-      //   title: "Oopps!",
-      //   subTitle: "SAVE IN TABLE",
-      //   buttons: ['OK']
-      // });
-      // alert.present();
 
     this.apis.save_address(this.params).then((result) => {
       this.body1 = result;
@@ -129,7 +117,13 @@ export class AddressPage {
   }
 
     loader.dismiss();
-    this.navCtrl.push("CheckoutPage", { user_details: this.user_details })
+    if (this.from_checkout == "1"){
+      this.navCtrl.push("FoodCheckoutPage", { user_details: this.user_details })
+    }
+    else{
+      this.navCtrl.push("CheckoutPage", { user_details: this.user_details })
+    }
+    
   }
 
 }

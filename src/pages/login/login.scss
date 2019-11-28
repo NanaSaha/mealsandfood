@@ -17,21 +17,27 @@ page-login {
   
   .background{
   
-   /* The image used */
-    background-image: url("../assets/imgs/login.png");
-    
-     
+    // background-image: url("../assets/imgs/login_img2.png");    
+    //   height: 100%;
+    //   background-position: center;
+    //   background-repeat: no-repeat;
+    //   background-size: cover;
+    //   align-content: center;
+    //   text-align:center;
+    background: linear-gradient( rgba(0,0,0,0.5),
+     rgba(0, 0, 0, 0.5) ),
+     url(../assets/imgs/login_img.png)
+      no-repeat center center;
+
+      background-size: cover;
+      text-align:center;
       height: 100%;
   
-      /* Center and scale the image nicely */
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      align-content: center;
-      text-align:center;
   
-      }    
-  
+      }   
+      
+      
+      
          .pad{
   
           text-align:center;    
@@ -65,26 +71,44 @@ page-login {
         width: 80%;
         
         left: 10%;
-          // height: 100px;
-          // -moz-border-radius: 50px;
-          // -webkit-border-radius: 50px;
-          // border-radius: 10px;
-          // margin-bottom: 10px;
-      // width: 70%;
-      //  align-content: center;
-      // text-align:center;
-      // align-items: center;
-      // padding-left: 20%;
-      //border:solid 100px black;
-      // background-color: black;
-      // opacity: .7;
-      //  position : absolute;
-  
-  // background-color: transparent !important;
-  // background: transparent !important;
-  
+        
        
   }
+
+
+
+  @media screen and (max-width: 599px) {
+
+ 
+
+
+}
+
+
+@media screen and ( max-width: 1366px) and (min-width: 600px ) {
+
+
+    form, input, optgroup, select {
+        margin: 0;
+        font: inherit;
+        color: inherit;
+        padding-top: 20%;
+    }
+
+
+ h2 {
+  margin-top: 1.8rem;
+  font-size: 4.6rem;
+}
+
+p {
+margin-top: 1.8rem;
+font-size: 2.8rem;
+}
+
+
+
+}
   
   }
   

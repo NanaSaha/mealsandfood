@@ -1,0 +1,44 @@
+page-createlist {
+
+    .background{
+
+        background-image: url("../assets/imgs/white_background.png");  
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        align-content: center;
+        text-align:center;
+        opacity: 1.0;
+    }
+
+
+
+    .item:not(.item-label-stacked):not(.item-label-floating) .ionic-selectable-md .ionic-selectable-value {
+    padding-left: 0% !important;
+    width: 100% !important;
+}
+
+.ionic-selectable-icon {
+    position: relative ;
+    width: 0px !important;
+    display: none !important;
+}
+
+.ionic-selectable {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    max-width: 100% !important;
+    width: 100% !important;
+  
+}
+
+.md button {
+    text-transform: none;
+    border-bottom-color: black !important;
+}
+
+
+}

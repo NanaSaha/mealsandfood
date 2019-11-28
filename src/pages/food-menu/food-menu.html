@@ -2,134 +2,122 @@
 
   <ion-navbar>
     <ion-title>List Of Foodstuffs</ion-title>
+    <ion-buttons end class="margin">
+      <button ion-button icon-only (tap)="lists()">
+
+        <ion-icon name="add" class="right" ></ion-icon>
+      
+
+      </button>
+    </ion-buttons>
+    <ion-buttons end class="margin">
+      <button ion-button icon-only (tap)="cart()">
+
+        <!-- <img src="assets/imgs/cart.png" height="30px" width="30px" class="right" /> -->
+        <ion-icon name="cart" class="right" ></ion-icon>
+        <ion-badge>{{count}}</ion-badge>
+
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
+    <!-- <ion-searchbar
+    [(ngModel)]="myInput"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)">
+  </ion-searchbar> -->
 
-  <!-- <ion-list-header no-padding>
+  <!-- <ion-searchbar (ionInput)="getItems($event)" [debounce]="500" placeholder="Search..."></ion-searchbar> -->
 
-    <ion-row class="container">
+  <ion-list no-lines *ngIf="body">
+    <ion-list class="accordion-list" overflow-scroll='true'> 
+      <ion-list-header *ngFor="let item of body; let i = index" no-lines no-padding>
+        <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
+          <ion-icon item-right name="arrow-down" *ngIf="!item.open"></ion-icon>
+          <ion-icon item-right name="arrow-up" *ngIf="item.open"></ion-icon>
+          {{ item.food_menu }}
+        </button>
 
-
-      <ion-col col-4 tappable (tap)="details()">
-
-        <img src="assets/imgs/fruits.svg" id="imgsize" />
-
-      </ion-col>
-
-      <ion-col col-8 tappable (tap)="details()">
-        <h2>
-          <b style="color: black">Fruits & Vegetables</b>
-        </h2>
-        <p>Variety of fruits available </p>
-      </ion-col>
-
-
-      <ion-col col-4 tappable (tap)="details()">
-
-        <img src="assets/imgs/beverage.svg" id="imgsize" />
-
-      </ion-col>
-
-      <ion-col col-8 tappable (tap)="details()">
-        <h2>
-          <b style="color: black">Beverages</b>
-        </h2>
-        <p>Variety of Beverages available </p>
-
-      </ion-col>
-
-      <ion-col col-4 tappable (tap)="details()">
-
-        <img src="assets/imgs/grain.svg" id="imgsize" />
-
-      </ion-col>
-
-      <ion-col col-8 tappable (tap)="details()">
-        <h2>
-          <b style="color: black">Grain</b>
-        </h2>
-        <p>Different kinds of grain products
-          <br>available </p>
-      </ion-col>
-
-      <ion-col col-4 tappable (tap)="details()">
-
-        <img src="assets/imgs/meat.svg" id="imgsize" />
-
-      </ion-col>
-
-      <ion-col col-8 tappable (tap)="details()">
-        <h2>
-          <b style="color: black">Meat & Fish</b>
-        </h2>
-        <p>Choose all your meat & fish here </p>
-
-      </ion-col>
-
-      <ion-col col-4 tappable (tap)="details()">
-
-        <img src="assets/imgs/crops.svg" id="imgsize" />
-
-      </ion-col>
-
-      <ion-col col-8 tappable (tap)="details()">
-        <h2>
-          <b style="color: black">Root Crops & Plantains</b>
-        </h2>
-        <p>Your daily crops here </p>
-
-      </ion-col>
-
-
-    </ion-row>
-
-  </ion-list-header> -->
-
-
-  <ion-list class="accordion-list">
-    <ion-list-header *ngFor="let item of information; let i = index" no-lines no-padding>
-      <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
-        <ion-icon item-right name="arrow-down" *ngIf="!item.open"></ion-icon>
-        <ion-icon item-right name="arrow-up" *ngIf="item.open"></ion-icon>
-        {{ item.name }}
-      </button>
-
-      <ion-list *ngIf="item.open" no-lines>
-
-        <ion-list-header *ngFor="let child of item.children; let j = index" no-padding> 
+        <ion-list *ngIf="item.open" no-lines>
+            <ion-list-header *ngFor="let food_item of item.foods; let j = index" no-padding>
 
           <ion-row class="container">
-
-            <ion-col col-2 tappable (tap)="details()">
+            <ion-col col-2>
               <ion-avatar item-start>
-                <img src="assets/imgs/fruits.svg" />
+
+                <img [src]="food_item.food_logo_url" />
 
               </ion-avatar>
             </ion-col>
 
-            <ion-col col-7 tappable (tap)="details()">
+            <ion-col col-7 (tap)="details(food_item)">
               <h2>
-                <b style="color: black">{{ child.name }}</b>
+                <b style="color: black">{{food_item.food_name}}</b>
               </h2>
-              <p>{{ child.information }}</p>
+              <p>{{food_item.description}} </p>
+              <p text-wrap>Minimum Price Order: GHC{{ food_item.price.toFixed(2)}} </p>
 
             </ion-col>
 
             <ion-col col-3>
-              <h2> {{ child.price }}</h2>
-              <ion-icon name="add-circle" tappable class="move-center"></ion-icon>
+              <ion-icon name="add-circle" tappable class="move-center" (tap)="details(food_item)"></ion-icon>
             </ion-col>
-
           </ion-row>
+
         </ion-list-header>
+        </ion-list>
+      </ion-list-header>
+    </ion-list>
+  </ion-list>
+
+
+
+
+
+  <ion-list *ngIf="!body">
+
+    <ion-list-header *ngFor="let fake of fakeUsers; let i = index" no-lines no-padding class="fakeItem">
+      <ion-list no-lines>
+
+        <ion-row class="container">
+          <ion-col col-2>
+            <ion-avatar item-start>
+
+              <img [src]="" />
+
+            </ion-avatar>
+          </ion-col>
+
+          <ion-col col-7>
+            <h2>
+              <b></b>
+            </h2>
+            <p> </p>
+
+          </ion-col>
+
+          <ion-col col-3>
+            <h2></h2>
+
+          </ion-col>
+        </ion-row>
+
+
       </ion-list>
     </ion-list-header>
   </ion-list>
 
 
-
 </ion-content>
+
+<ion-footer *ngIf="count > 0">
+  <p>
+    <button ion-button color="secondary" class="button button-dark customBtn" (tap)="cart()"> View Cart ({{count}}) </button>
+  </p>
+
+</ion-footer>

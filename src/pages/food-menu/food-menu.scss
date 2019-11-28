@@ -12,9 +12,15 @@ page-food-menu {
         // background-size: cover;
     }
 
-    #imgsize{
-        width: 50%;
-        margin-left: 30%
+    .button.customBtn{
+        width: 100%;
+    
+    }
+
+    .center1{
+        text-align: center;
+       padding-top: 30%
+
     }
 
     .label {
@@ -68,6 +74,7 @@ page-food-menu {
    .move-center{
     padding-left: 50%;
     color: green;
+    font-size: 30px;
    }
 
 .itemup{
@@ -85,7 +92,7 @@ page-food-menu {
     margin-bottom: 4px;
 }
 .section-active {
-    background: #6c63ff;
+    background: #781318;
     color: #fff;
 }
 
@@ -106,4 +113,69 @@ page-food-menu {
 }
 
 
+
+.fakeItem {
+    // h2, h3, p {
+    //   background-color: lightgrey;
+    //   opacity: 0.5;
+    //   height: 1em;
+    //   margin-top: 10px;
+    // }
+   
+    // h2 {
+    //   width: 35%;
+    // }
+   
+    // h3 {
+    //   width: 40%;
+    // } 
+   
+    // p {
+    //   width: 60%;
+    // }
+
+
+    @keyframes animatedBar{
+        0%{
+            background-position: -406px 0;
+        }
+        100%{
+            background-position: 0 0;
+        }
+     }
+    
+      h2, h3, p {
+        background-color: lightgrey;
+        opacity: 0.5;
+        height: 1em;
+        margin-top: 10px;
+        position: relative;
+        background: linear-gradient(to right, #dddddd , #EEEEEE);
+        animation: animatedBar 700ms linear infinite;
+        
+        &:after {
+          position: absolute;
+          display: block;
+          content: '';
+          right: 0;
+          bottom: 0;
+          top: 0;
+          background-color: white;
+        }
+      }
+    
+      h2:after {
+        width: 65%;
+      }
+    
+      h3:after {
+        width: 60%;
+      }  
+    
+      p:after {
+        width: 40%;
+      }
+   }
+
 }
+

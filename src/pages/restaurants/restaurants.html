@@ -10,9 +10,10 @@
 
       </ion-col>
       <ion-col col-5>
-        <img src="assets/imgs/refresh.png" class="right" />
-        <img src="assets/imgs/cart.png" height="30px" width="30px" class="right" />
-
+        <!-- <img src="assets/imgs/refresh.png" class="right" />
+        <img src="assets/imgs/cart.png" height="30px" width="30px" class="right" />-->
+        <ion-icon name="refresh" class="right"></ion-icon>
+        <ion-icon name="cart" class="right"></ion-icon>
       </ion-col>
     </ion-row>
   </ion-navbar>
@@ -26,39 +27,69 @@
   </ion-list-header>
 
   <div class="center1" *ngIf="body?.length == 0">
-      <img src="assets/imgs/notavail.svg"  height="50px" width="70px" />
+    <img src="assets/imgs/notavail.svg" height="50px" width="70px" />
     <p style="color: #757575; text-align: center">No restaurants can be found in this location </p>
   </div>
 
-  <ion-list  *ngFor="let item of body">
-      <!-- [virtualScroll]="body" -->
-    <ion-card tappable (tap)="openMenu(item)">
-      <ion-item>
-        <ion-avatar item-start>
-         
-          <img [src]="item.logo" />
+  <ion-list no-lines *ngIf="body">
+    <ion-list *ngFor="let item of body">
+      <ion-card tappable (tap)="openMenu(item)">
+        <ion-item>
+          <ion-avatar item-start>
 
-        </ion-avatar>
+            <img [src]="item.logo" />
 
-        <h2>
-          <b>{{ item.name}}</b>
-        </h2>
-        <p>{{ item.descriptions}} </p>
-        <ion-icon name="star" class="star"></ion-icon>
-        <ion-icon name="star" class="star"></ion-icon>
-        <ion-icon name="star" class="star"></ion-icon>
-        <ion-icon name="star-half" class="star"></ion-icon>
-        <br>
-        <p>Pay by: Cash, Mobile Money </p>
+          </ion-avatar>
 
-        <p class="right">Delivers in {{ item.delivery_estimate}}</p>
+          <h2 text-wrap>
+            <b>{{ item.name}}
+              <ion-badge class="badge" *ngIf=" item.restaurants_time_status == true">Open</ion-badge>
+              <ion-badge class="badge" id="badgecolor" *ngIf=" item.restaurants_time_status == false">Closed</ion-badge>
+            </b>
+          </h2>
+          <p text-wrap>{{ item.descriptions}} </p>
+          <ion-icon name="star" class="star"></ion-icon>
+          <ion-icon name="star" class="star"></ion-icon>
+          <ion-icon name="star" class="star"></ion-icon>
+          <ion-icon name="star-half" class="star"></ion-icon>
+          <br>
 
-      </ion-item>
-    </ion-card>
-    <br>
 
-    
+          <p class="right" text-wrap>Delivers in {{ item.delivery_estimate}}</p>
 
+        </ion-item>
+      </ion-card>
+      <br>
+    </ion-list>
+  </ion-list>
+
+
+
+
+  <ion-list *ngIf="!body">
+    <ion-item *ngFor="let fake of fakeUsers" class="fakeItem">
+      <ion-card>
+        <ion-item>
+          <ion-avatar item-start>
+
+            <img [src]="" />
+
+          </ion-avatar>
+
+          <h2>
+
+          </h2>
+          <p> </p>
+          <br>
+          <p></p>
+
+          <p class="right"></p>
+
+        </ion-item>
+      </ion-card>
+      <br>
+      <br>
+    </ion-item>
   </ion-list>
 
 </ion-content>

@@ -1,38 +1,108 @@
 import { Component } from '@angular/core';
-import { IonicPage,NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormBuilder, Validators } from '@angular/forms';
+import { ToastController, LoadingController, AlertController } from 'ionic-angular';
+import { ApisProvider } from '../../providers/apis/apis';
+import { Http } from '@angular/http';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 @IonicPage()
 @Component({
   selector: 'page-list',
-  templateUrl: 'list.html'
+  templateUrl: 'list.html',
 })
 export class ListPage {
-  selectedItem: any;
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  user_details;
+  jsonBody: any;
+  jsonBody1: any;
+  list;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
+  body1: any;
+  params: any;
+  body: any;
+  user_id: any;
+  body2;
+  list_details;
+  food_list: string = "Weekly";
+  
 
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
+  constructor(public toastCtrl: ToastController, public apis: ApisProvider, public _form: FormBuilder, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+    this.user_details = this.navParams.get("customer_details")
 
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
-  }
+    this.body = this.user_details
+    this.jsonBody = JSON.parse(this.body);
+    this.user_id = this.jsonBody[0].id
+    console.log("USer DETAILS From LOGIN" + this.user_details)
+    console.log("USer ID " + this.user_id)
 
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push("ListPage", {
-      item: item
+    let loader = this.loadingCtrl.create({
+      content: "Please wait ...",
     });
+
+    loader.present();
+
+
+
+    this.params = {
+      "user_id": this.user_id
+    }
+
+
+    this.apis.retrieve_list_details(this.params).then((result) => {
+      this.body2 = result;
+      this.list_details = JSON.stringify(this.body2)
+      console.log("Lets see all the restaurant_details as body " + this.body2)
+      console.log("Lets see all the restaurant_details " + this.list_details)
+    });
+
+    loader.dismiss();
   }
+
+  createList(){
+    this.navCtrl.push("CreatelistPage",{customer_details: this.user_details})
+  }
+
+  placeOrder(item){
+
+
+    let loader = this.loadingCtrl.create({
+      content: "Please wait ...",
+    });
+
+    loader.present();
+
+
+
+    this.params = {
+      "user_id": this.user_id
+    }
+
+
+    this.apis.place_weekly_order(this.params).then((result) => {
+      this.body2 = result;
+      this.list_details = JSON.stringify(this.body2)
+      console.log("Lets see all the restaurant_details as body " + this.body2)
+      console.log("Lets see all the restaurant_details " + this.list_details)
+    });
+
+    loader.dismiss();
+    let alert = this.alertCtrl.create({
+      title: "",
+      subTitle: "Your Weekly Order has been successfully placed. You will be contacted shortly by the M&F team.",
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+
+  // edit(item) {
+
+  //   this.navCtrl.push("CreatelistPage", { listDetails: this.list_details, customer_details: this.user_details });
+
+  // }
+
+
 }

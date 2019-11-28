@@ -1,0 +1,44 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Enter reset code</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+<ion-content overflow-scroll='true' class="background">
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <form [formGroup]="resetPasswordForm">
+  
+      <ion-list class="main-view">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <ion-item>
+          <ion-input type="text" placeholder="Enter Reset code sent via SMS" formControlName="resetcode" name="resetcode" [class.invalid]="!resetPasswordForm.controls.resetcode.valid && (resetPasswordForm.controls.resetcode.dirty || submitAttempt)"></ion-input>
+         
+          <ion-label> </ion-label>
+        </ion-item>
+        <br/>
+  
+     
+  
+        <br/>
+        <p>
+          <button ion-button color="kaya" class="button button-dark customBtn" [disabled]="!this.resetPasswordForm.valid" (tap)="reset()">
+            Proceed</button>
+        </p>
+        
+  
+       
+      </ion-list>
+  
+  
+  
+    </form>
+  </ion-content>

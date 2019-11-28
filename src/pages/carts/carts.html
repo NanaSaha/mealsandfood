@@ -26,9 +26,9 @@
           <img *ngIf="item" [src]="item.meal_logo_url" id="logo_size" />        
         </ion-col>
 
-        <ion-col col-6>
+        <ion-col col-6 text-wrap>
           <h4>
-            {{ item.meals_name}}
+            {{ item.meal_name}}
           </h4>
           <p>
             GHC {{ item.price}}
@@ -76,12 +76,12 @@
 
       <ion-row class="ash">
 
-        <ion-col col-6>
+        <ion-col col-6 text-wrap>
           <p style=" color: #187034;">CART ITEM: {{cartList.length}}</p>
 
         </ion-col>
 
-        <ion-col col-6>
+        <ion-col col-6 text-wrap>
           <p style=" color: #187034;">CART TOTAL: GHC {{getTotal()}}</p>
 
         </ion-col>

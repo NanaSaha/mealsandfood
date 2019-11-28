@@ -1,0 +1,53 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Create Weekly List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="background">
+  <form [formGroup]="listForm">
+      <ion-list>
+          <p>
+            <b style="color: black">Enter Food name</b>
+          </p>
+        
+        </ion-list>
+      <ion-item >
+          <ion-label ></ion-label> 
+          <ionic-selectable item-content [(ngModel)]="list_items.food_name" [items]="food_items" itemValueField="id" itemTextField="name" [canSearch]="true"
+            (onChange)="foodChange($event)" formControlName="food_name" name="food_name" [class.invalid]="!listForm.controls.food_name.valid && (listForm.controls.food_name.dirty || submitAttempt)">
+          </ionic-selectable>
+        </ion-item>
+    <br>
+    <!-- <ion-item>
+      <ion-label stacked>Enter Food name</ion-label>
+      <ion-input type="text" placeholder="Foodstuff name" formControlName="food_name" name="food_name" 
+        [class.invalid]="!listForm.controls.food_name.valid && (listForm.controls.food_name.dirty || submitAttempt)"></ion-input>
+    </ion-item> -->
+
+    
+    <ion-list>
+        <p>
+          <b style="color: black">Amount you want to buy</b>
+        </p>
+      
+      </ion-list>
+
+    <ion-item>
+       
+      <!-- <ion-label stacked> Amount you want to buy</ion-label> -->
+      <ion-input type="number" [(ngModel)]="list_items.amount" placeholder="Amount (GHC)" formControlName="amount" name="amount"  [class.invalid]="!listForm.controls.amount.valid && (listForm.controls.amount.dirty || submitAttempt)"></ion-input>
+    </ion-item>
+
+
+    <p>
+      <button ion-button color="secondary" class="button button-dark customBtn" [disabled]="!this.listForm.valid" (tap)="addtoList()">Add to list</button>
+    </p>
+
+
+  </form>
+
+</ion-content>

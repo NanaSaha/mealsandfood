@@ -6,9 +6,10 @@
   </ion-header>
 
   <ion-content id="background2">
-    <ion-list >
-      <button menuClose ion-item no-lines id="background2" class="pad" *ngFor="let p of pages" (click)="openPage(p)">
-          <ion-icon [name]="p.icon" item-left></ion-icon> {{p.title}}
+    <ion-list class="sidelist">
+      <button menuClose ion-item  id="background2" class="pad" *ngFor="let p of pages" (click)="openPage(p)">
+          <!-- <ion-icon [name]="p.icon" item-left></ion-icon> -->
+          {{p.title}}
       </button>
     </ion-list>
   </ion-content>

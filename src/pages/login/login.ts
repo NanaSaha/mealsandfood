@@ -47,6 +47,11 @@ signup(){
   
     }
 
+    reset(){
+      this.navCtrl.push("ForgotpasswordPage")
+      
+        }
+
 
     login() {
 
@@ -60,6 +65,8 @@ signup(){
   
       let loader = this.loadingCtrl.create({
         content: "Please wait ...",
+        spinner: 'dots',
+        // cssClass: 'transparent'
       });
   
       loader.present();
@@ -124,7 +131,7 @@ signup(){
         if (this.api_code != "200") {
           let alert = this.alertCtrl.create({
             title: "",
-            subTitle: this.messageList,
+            subTitle: "Wrong mobile number or password.Kindly try again!",
             buttons: ['OK']
           });
           alert.present();

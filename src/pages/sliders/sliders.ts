@@ -32,6 +32,7 @@ ionViewDidLoad() {
   console.log('ionViewDidLoad SliderPage');
 }
 
+
  skip(){
   this.navCtrl.setRoot("LoginPage")
   // this.navCtrl.push(LoginPage) 

@@ -7,8 +7,8 @@
     <ion-buttons end class="margin">
       <button ion-button icon-only (tap)="cart()">
 
-        <img src="assets/imgs/cart.png" height="30px" width="30px" class="right" />
-
+        <!-- <img src="assets/imgs/cart.png" height="30px" width="30px" class="right" /> -->
+        <ion-icon name="cart" class="right" ></ion-icon>
         <ion-badge>{{count}}</ion-badge>
 
       </button>
@@ -28,13 +28,40 @@
   <ion-item>
     <ion-list>
       <h2>
-        <b style="color: black">{{item.meals_name}}</b>
+        <b style="color: black">{{item.meal_name}}</b>
       </h2>
       <p>{{item.description}} </p>
       <p>Ghc {{item.price}} </p>
     </ion-list>
 
   </ion-item>
+
+  <ion-item no-lines>
+      <ion-list>
+          <p>
+            <b style="color: black">Quantity</b>
+          </p>
+        
+        </ion-list>
+    <ion-row>
+
+      <ion-col col-4 tappable>
+        
+        <ion-icon ios="ios-remove-circle" md="md-remove-circle" color="danger" (tap)="quantityMinus(item)"></ion-icon>
+      </ion-col>
+
+      <ion-col col-4>
+        <h4 class="margin">
+             {{item.quantity}}
+        </h4>
+      </ion-col>
+      <ion-col col-4 tappable>
+          <ion-icon ios="ios-add-circle" md="md-add-circle" color="secondary" (tap)="quantityAdd(item)"></ion-icon>
+      </ion-col>
+
+    </ion-row>
+  </ion-item>
+
 
 
   <!-- <ion-item>
@@ -83,4 +110,33 @@
     </p>
   </ion-footer>
 </ion-list>
+
+
+
+
+<ion-list *ngIf="!body">
+
+    <ion-list-header *ngFor="let fake of fakeUsers; let i = index" no-lines no-padding class="fakeItem">
+      <ion-list no-lines>
+  
+        <ion-item class="center">
+     
+          <img [src]=""/>
+        </ion-item>
+      
+        <ion-item>
+          <ion-list>
+            <h2>
+              <b style="color: black"></b>
+            </h2>
+            <p></p>
+            <p> </p>
+          </ion-list>   
+        </ion-item>
+   
+  
+      </ion-list>
+    </ion-list-header>
+  </ion-list>
+  
 </ion-content>

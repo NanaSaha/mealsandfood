@@ -1,16 +1,14 @@
-<ion-content >
+<!-- <ion-content class="background" >
   <ion-slides autoplay="1000" loop="true" speed="2000" autoplayDisableOnInteraction="false" zoom="true" pager>
 
 
     <ion-slide class="background">
       <img src="assets/imgs/chef.svg"/> 
-      <!-- <p style=" color: #32db64;">
-        Meals & Food
-      </p> -->
-      <p style=" color: #32db64;">Order your food & Meals <br> from your favorite Restaurant</p>
+      
+      <p style=" color: #333333; font-weight: 500" text-wrap>Your favorite Restaurants ready to receive your orders</p>
       <br>
-      <div class="card-title" (tap)="skip()">
-        <ion-icon name="md-arrow-forward"></ion-icon>
+      <div class="card-title" tappable (tap)="skip()">
+        <ion-icon tappable name="md-arrow-forward"></ion-icon>
       </div>
 
     </ion-slide>
@@ -18,45 +16,93 @@
 
     <ion-slide class="background">
      <img src="assets/imgs/undraw.svg"  /> 
-      <!-- <h4 style=" color: #32db64;">
-        Assorted Food & Meals
-      </h4> -->
-      <p style=" color: #32db64;">Any food you want is available to choose from</p>
+      
+      <p style=" color: #333333; font-weight: 500" text-wrap>Any meal you want? We got you served</p>
       <br>
-      <div class="card-title" (tap)="skip()">
-        <ion-icon name="md-arrow-forward"></ion-icon>
+      <div class="card-title" tappable (tap)="skip()">
+        <ion-icon tappable name="md-arrow-forward"></ion-icon>
       </div>
 
     </ion-slide>
 
     <ion-slide class="background">
        <img src="assets/imgs/delivery.svg"  /> 
-      <!-- <h4 style=" color: #32db64;">
-        Tracking & Delivery
-      </h4> -->
-      <p style=" color: #32db64;">Get your food delivered to you instantly!</p>
+     
+      <p style=" color: #333333; font-weight: 500" text-wrap>Get your food delivered to you instantly!</p>
       <br>
-      <div class="card-title" (tap)="skip()">
-        <ion-icon name="md-arrow-forward"></ion-icon>
+      <div class="card-title" tappable (tap)="skip()">
+        <ion-icon  tappable name="md-arrow-forward"></ion-icon>
       </div>
     </ion-slide>
 
 
     <ion-slide class="background">
       <img src="assets/imgs/pay.svg" /> 
-      <!-- <h4 style=" color: #32db64;">
-        Easy Payments!
-      </h4> -->
-      <p style=" color: #32db64;">Choose between a number of payment options!</p>
+    
+      <p style=" color: #333333; font-weight: 500" text-wrap>Choose between a number of payment options!</p>
       <br>
-      <div class="card-title" (tap)="skip()">
-        <ion-icon name="md-arrow-forward"></ion-icon>
+      <div class="card-title" tappable (tap)="skip()">
+        <ion-icon tappable name="md-arrow-forward"></ion-icon>
       </div>
 
     </ion-slide>
 
 
-
   </ion-slides>
 
+</ion-content> -->
+
+<div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">
+  <div class="flb">
+    <div class="Aligner-item Aligner-item--top"></div>
+    <img src="assets/icon/mlogo.png">
+  
+    <div class="Aligner-item Aligner-item--bottom"></div>
+  </div>
+</div>
+
+<ion-content overflow-scroll='true' class="background">
+  <ion-slides  loop="true" speed="2000" autoplayDisableOnInteraction="false" pager>
+    
+
+
+<ion-slide class="background">
+  <div class="padding-icon">
+  <img src="assets/imgs/groce3.png" width="70%" />
+</div>
+
+<h2>
+  <b text-wrap> Need some Groceries?</b>
+</h2>
+<p text-wrap>Get your Groceries delivered to you instantly!</p>
+
+
+
+<div class="padding">
+  <b class="pad">
+    <button ion-button color="primary" class="button button-dark customBtn" (tap)="skip()"><b>Get Started </b> </button>
+  </b>
+</div>
+</ion-slide>
+
+
+<ion-slide class="background">
+  <div class="padding-icon">
+  <img src="assets/imgs/welcome_food.png" width="70%" />
+</div>
+
+<h2>
+  <b> Feeling Hungry?</b>
+</h2>
+<p text-wrap>We would deliver your food right to your doorstep</p>
+
+
+
+<div class="padding">
+  <b class="pad">
+    <button ion-button color="primary" class="button button-dark customBtn" (tap)="skip()"><b>Get Started</b> </button>
+  </b>
+</div>
+</ion-slide>
+</ion-slides>
 </ion-content>
