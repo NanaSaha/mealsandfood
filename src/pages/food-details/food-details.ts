@@ -24,6 +24,7 @@ export class FoodDetailsPage {
   price: any;
   fakeUsers: Array<any> = new Array(5);
   old_price: any;
+  typed_price;
 
   constructor(public apis: ApisProvider,public cartServ: FoodCartService,public loadingCtrl: LoadingController,public alertCtrl: AlertController,private http: Http,public navCtrl: NavController, public navParams: NavParams) {
     console.log("--------------CONSTRUCTOR START---------------------")
@@ -86,14 +87,25 @@ export class FoodDetailsPage {
     console.log("NOw strign " + pro);
     console.log("QUantity " + item.quantity);
     console.log("ITEM PRICE " + item.price);
-    console.log("TYPED IN PRICE" + this.price);
+    
 
     //ADDING NEW PRICE TO THE ITEM
+    this.typed_price =  parseFloat(this.price).toFixed(2);
+    //this.typed_price =  this.price
+    console.log (this.typed_price)
     let food_details = item
-    food_details.new_food_price =  this.price;
-    console.log("NEW PRICE array " + food_details.new_food_price);
+    
+    if (this.typed_price !== 'NaN'){
+    console.log("TYPED IN PRICE" + this.price);
+    item.price =  parseFloat(parseFloat(this.price).toFixed(2));
+    //item.price = parseInt(this.price)
+    // console.log("NEW PRICE array " + food_details.new_food_price);
     console.log("NEW PRICE array " + food_details);
    console.log("NEW PRICE stringify " + JSON.stringify(food_details));
+   console.log("item.price " + item.price);
+    }
+
+    //item.price =  parseFloat(item.price).toFixed(2);
 
     this.cartServ.addItem(food_details, item.quantity);
 

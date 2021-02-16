@@ -1,0 +1,230 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ restaurant_name}}</ion-title>
+
+    <ion-buttons end class="margin">
+      <button ion-button icon-only (tap)="cart()">
+        <!-- <img src="assets/imgs/cart.png" height="30px" width="30px" class="right" /> -->
+        <ion-icon name="cart" class="right"></ion-icon>
+        <ion-badge>{{count}}</ion-badge>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content overflow-scroll="true" class="background">
+  <!-- <div class="center1" *ngIf="body?.length == 0 || body?.length == null" text-wrap>
+    <img src="assets/imgs/notavail.svg" height="50px" width="70px" />
+    <p style="color: #757575; text-align: center"> Menu not available for this restaurant yet</p>
+  </div> -->
+
+  <ion-list *ngIf="body?.length > 0">
+    <ion-list-header>
+      <ion-row>
+        <ion-col col-3>
+          <ion-avatar item-start>
+            <img [src]="restaurant_logo" />
+          </ion-avatar>
+        </ion-col>
+        <ion-col col-9>
+          <h2>
+            <b style="color: black" text-wrap>{{ restaurant_name}}</b>
+          </h2>
+          <p text-wrap>{{ restaurant_description}}</p>
+          <ion-icon name="star" class="star"></ion-icon>
+          <ion-icon name="star" class="star"></ion-icon>
+          <ion-icon name="star" class="star"></ion-icon>
+          <ion-icon name="star-half" class="star"></ion-icon>
+          <br />
+        </ion-col>
+      </ion-row>
+    </ion-list-header>
+
+    <ion-segment [(ngModel)]="food_cat" overflow-scroll="true">
+      <ion-segment-button class="segment-button" value="breakfast">
+        Menu
+      </ion-segment-button>
+      <!-- <ion-segment-button value="lunch"> Reviews </ion-segment-button>
+      <ion-segment-button value="dinner"> Info </ion-segment-button> -->
+    </ion-segment>
+
+    <div [ngSwitch]="food_cat">
+      <ion-list *ngSwitchCase="'breakfast'" overflow-scroll="true">
+        <ion-list class="accordion-list" overflow-scroll="true">
+          <ion-list-header
+            *ngFor="let item of body; let i = index"
+            no-lines
+            no-padding
+          >
+            <button
+              ion-item
+              (tap)="toggleSection(i)"
+              detail-none
+              [ngClass]="{'section-active': item.open, 'section': !item.open}"
+              text-wrap
+            >
+              <ion-icon
+                item-right
+                name="arrow-down"
+                *ngIf="!item.open"
+              ></ion-icon>
+              <ion-icon item-right name="arrow-up" *ngIf="item.open"></ion-icon>
+              {{ item.menu_name }}
+            </button>
+
+            <ion-list *ngIf="item.meals && item.open" no-lines>
+              <ion-list-header
+                *ngFor="let meal_item of item.meals; let j = index"
+                no-padding
+              >
+                <!--- if meals has children-->
+                <button
+                  ion-item
+                  (tap)="toggleSection(i,j)"
+                  detail-none
+                  *ngIf="meal_item.children"
+                  text-wrap
+                >
+                  <ion-icon
+                    item-right
+                    name="add"
+                    *ngIf="!meal_item.open"
+                  ></ion-icon>
+                  <ion-icon
+                    item-right
+                    name="close"
+                    *ngIf="meal_item.open"
+                  ></ion-icon>
+                  {{ item.menu_name }}
+                </button>
+
+                <!--- if meals has no children then display the values-->
+
+                <ion-row class="container" *ngIf="!meal_item.children">
+                  <ion-col col-2 tappable>
+                    <ion-avatar item-start>
+                      <img [src]="meal_item.meal_logo_url" />
+                    </ion-avatar>
+                  </ion-col>
+
+                  <ion-col col-7 text-wrap>
+                    <h2 tappable>
+                      <b style="color: black">{{meal_item.meal_name}}</b>
+                    </h2>
+                    <p text-wrap tappable>{{meal_item.description}}</p>
+
+                    <p text-wrap tappable>Minimum Order Price: GHC100.00</p>
+
+                    <ion-row text-wrap>
+                      <!-- 
+                      <ion-col col-4>
+
+                        <p text-wrap class="margin">Quantity: </p>
+                      </ion-col> -->
+                      <ion-col col-2 tappable>
+                        <ion-icon
+                          ios="ios-remove-circle"
+                          md="md-remove-circle"
+                          color="danger"
+                          (tap)="quantityMinus(meal_item)"
+                        ></ion-icon>
+                      </ion-col>
+
+                      <ion-col col-2>
+                        <h4 class="margin">{{meal_item.quantity}}</h4>
+                      </ion-col>
+                      <ion-col col-2 tappable>
+                        <ion-icon
+                          ios="ios-add-circle"
+                          md="md-add-circle"
+                          color="fats"
+                          (tap)="quantityAdd(meal_item)"
+                        ></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </ion-col>
+
+                  <ion-col col-3 text-wrap>
+                    <h2>Ghc {{meal_item.price}}</h2>
+                    <!-- <ion-icon name="add-circle" tappable class="move-center" (tap)="addTocart(meal_item)"></ion-icon> -->
+
+                    <p>
+                      <button
+                        ion-button
+                        color="secondary"
+                        outline
+                        (tap)="addTocart(meal_item)"
+                      >
+                        Add
+                      </button>
+                    </p>
+                  </ion-col>
+                  <ion-item>
+                    <ion-textarea
+                      placeholder="Tell us what more you want here"
+                      auto-grow="true"
+                      rows="4"
+                    ></ion-textarea>
+                  </ion-item>
+                </ion-row>
+              </ion-list-header>
+            </ion-list>
+          </ion-list-header>
+        </ion-list>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'lunch'"> </ion-list>
+
+      <ion-list *ngSwitchCase="'dinner'"> </ion-list>
+    </div>
+  </ion-list>
+
+  <ion-list *ngIf="!body">
+    <div [ngSwitch]="food_cat">
+      <ion-list *ngSwitchCase="'breakfast'">
+        <ion-list class="accordion-list">
+          <ion-list-header
+            *ngFor="let fake of fakeUsers; let i = index"
+            no-lines
+            no-padding
+            class="fakeItem"
+          >
+            <ion-list no-lines>
+              <ion-row class="container">
+                <ion-col col-2 tappable>
+                  <ion-avatar item-start>
+                    <img [src]="" />
+                  </ion-avatar>
+                </ion-col>
+
+                <ion-col col-7 tappable>
+                  <h2>
+                    <b></b>
+                  </h2>
+                  <p></p>
+                </ion-col>
+
+                <ion-col col-3>
+                  <h2></h2>
+                </ion-col>
+              </ion-row>
+            </ion-list>
+          </ion-list-header>
+        </ion-list>
+      </ion-list>
+    </div>
+  </ion-list>
+</ion-content>
+
+<ion-footer *ngIf="count > 0">
+  <p>
+    <button
+      ion-button
+      color="secondary"
+      class="button button-dark customBtn"
+      (tap)="cart()"
+    >
+      View Cart ({{count}})
+    </button>
+  </p>
+</ion-footer>

@@ -30,12 +30,34 @@ export class PaymentPage {
   customer_email: any;
   amount: any;
 
+  NewLocation: any;
+  SpecialRequest: any;
+  total_amt;
+
+
+    service_fee;
+  delivery_fee;
+
+  jsonCheck: any;
+  jsonCheck2;
+  params2: any;
+  total_amount_plus_delivery;
+
+
+   public public_key = 'pk_live_25b093361d8ff68330d94fda3baefea56b0db1c4'; //Put your paystack Test or Live Key here
+  public channels = ['bank', 'card', 'ussd', 'qr','mobile_money']; //Paystack Payment Methods
+  public random_id = Math.floor(Date.now() / 1000); //Line to generate reference number
+
+
 
 
 
   constructor(public toastCtrl: ToastController, public _form: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public apis: ApisProvider, public cartServ: CartService, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
-    this.user_details = this.navParams.get("user_details")
+       this.user_details = this.navParams.get("user_details")
     this.order_id = this.navParams.get("order_id")
+    this.SpecialRequest = this.navParams.get("requests")
+    this.NewLocation = this.navParams.get("new_location")
+    this.total_amount_plus_delivery =  this.navParams.get("total_amount_plus_delivery") * 100
     this.body = this.user_details
     this.jsonBody = JSON.parse(this.body);
     this.user_id = this.jsonBody[0].id
@@ -45,7 +67,14 @@ export class PaymentPage {
     console.log("USer DETAILS " + this.user_details)
     console.log("USer ID " + this.user_id)
     console.log("mobile_number " + this.mobile_number)
-    this.cartList = cartServ.getAllCartItems();
+    console.log("order_id " + this.order_id)
+    console.log('SpecialRequest IS' + this.SpecialRequest);
+    console.log('NewLocation IS' + this.NewLocation); 
+      console.log('total_amount_plus_delivery IS' + this.total_amount_plus_delivery ); 
+
+     this.amount = this.cartServ.getGrandTotal()
+
+     console.log('AMOUNT IS' + this.amount);
 
 
 
@@ -56,6 +85,50 @@ export class PaymentPage {
       "voucher": [""],
 
     })
+
+
+      let loader = this.loadingCtrl.create({
+      content: "Please wait ...",
+    });
+
+    loader.present();
+
+    //params for special requests
+    this.params2 = {
+      "order_id": this.order_id,
+      "requests": this.SpecialRequest,
+      "new_location": this.NewLocation
+    }
+
+
+    this.apis.save_special_request_food(this.params2).then((result) => {
+     console.log(result)
+    });
+
+    this.apis.retrieve_delivery_charges().then((result) => {
+      this.body = result;
+  
+      console.log(this.body)
+      console.log(JSON.stringify(this.body))
+      console.log("Information", this.body)
+
+      this.service_fee = this.body[0].service_fee
+      this.delivery_fee = this.body[0].delivery_fee
+  
+      console.log("------------SERV FEE _+ DELIVE-------------------------------------------")
+      console.log("SERVICE FEE" + this.service_fee) 
+      console.log("DEL FEE " + this.delivery_fee) 
+
+      this.total_amt = this.getTotal() + (this.getTotal()* this.service_fee ) + this.delivery_fee
+    
+    
+      console.log("TOTAL AMOUNT PLUS DELIVERY" + this.total_amt)
+     
+    });
+
+    loader.dismiss();
+
+
 
 
   }
@@ -150,6 +223,23 @@ export class PaymentPage {
     loader.present();
     this.navCtrl.push("ReceiptPage", { momo_network: "", order_id: this.order_id, user_details: this.user_details })
     loader.dismiss();
+  }
+
+
+
+
+    //Callback function on successful payment 
+  paymentDone(ref: any) {
+    console.log(ref) //ref contains the response from paystack after successful payment
+
+    this.navCtrl.push("ReceiptPage", { momo_network: "", order_id: this.order_id, user_details: this.user_details })
+    
+  }
+
+  //Event triggered if User cancel the payment
+  paymentCancel() {
+    console.log('gateway closed')
+    //  this.navCtrl.push("ReceiptPage", { momo_network: "", order_id: this.order_id, user_details: this.user_details })
   }
 
 

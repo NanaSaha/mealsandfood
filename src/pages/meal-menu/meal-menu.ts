@@ -51,16 +51,19 @@ export class MealMenuPage {
     this.apis.fetch_restaurant_menus(this.restaurant_id).then((result) => {
       this.body = result;
       if (this.body != null){
-      this.body2 = result[0];
+        this.body2 = result[0].meals;
+         console.log("body2", this.body2 )
       this.menu_details = JSON.stringify(this.body)
       this.restaurant_details = JSON.stringify(this.body2)
-      this.restaurant_name = this.body2.restaurant_name
-      this.restaurant_logo = this.body2.restaurant_logo
-      this.restaurant_description = this.body2.restaurant_description
+      this.restaurant_name = this.body2[0].restaurant_name
+      this.restaurant_logo = this.body2[0].logo
+      this.restaurant_description = this.body2[0].descriptions
       console.log("-------------------------------------------------------")
       console.log(this.body)
       console.log(JSON.stringify(this.body))
-      console.log("Information", this.body )
+      console.log("restaurant_name", this.restaurant_name )
+      console.log("restaurant_logo", this.restaurant_logo)
+      console.log("restaurant_description", this.restaurant_description )
       console.log("-------------------------------------------------------")
       }
       else {
@@ -86,8 +89,8 @@ export class MealMenuPage {
 
 
   details(item) {
-    console.log("Lets see the meals id " + item.meals_id)
-    this.navCtrl.push("ItemDetailsPage", { meals_id: item.meals_id, restaurant_id: this.restaurant_id, user_details: this.user_details })
+    console.log("Lets see the meals id " + item.menu_items_id)
+    this.navCtrl.push("ItemDetailsPage", { meals_id: item.menu_items_id, restaurant_id: this.restaurant_id, user_details: this.user_details })
   }
 
   toggleSection(i) {

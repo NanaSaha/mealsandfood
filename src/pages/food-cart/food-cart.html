@@ -30,34 +30,34 @@
             <h4>
               {{ item.food_name}}
             </h4>
-            <p>
+            <p *ngIf = "item.quantity > 0">
               
-              GHC {{ item.price}}
-            </p>
-          </ion-col>
-       
-  
-          <!-- <ion-col col-1>
            
-              <ion-icon ios="ios-remove-circle" md="md-remove-circle" color="danger" (tap)="quantityMinus(item)"></ion-icon>
-      
-          </ion-col> -->
-  
-          <!-- <ion-col col-1>
-            <h4>
-              <p>
-                <b>{{ item.quantity}}</b>
+              <!-- GHC {{ item.price * item.quantity}}  -->
+              GHC {{ item.price}} 
+              
+            </p>
+
+            <p *ngIf = "item.quantity == 0">
+              
+                GHC {{ item.price}}
               </p>
-            </h4>
-          </ion-col> -->
-  
-          <!-- <ion-col col-1>
+          </ion-col>
+
+          <ion-row *ngIf = "item.quantity > 0">
+              <ion-col col-9>
+                  <h4>
+                    <p>
+                      <b> Qty: {{ item.quantity}}</b>
+                    </p>
+                  </h4>
+                </ion-col>
             
-              <ion-icon ios="ios-add-circle" md="md-add-circle" color="secondary" (tap)="quantityAdd(item)"></ion-icon>
+          </ion-row>
+       
         
-          </ion-col> -->
   
-          <ion-col col-1>
+          <ion-col col-1 >
            
               <ion-icon ios="ios-close-circle" md="md-close-circle"  color="red" (tap)="removeItemFromCart(item)"></ion-icon>
            
@@ -75,12 +75,12 @@
   
         <ion-row class="ash">
   
-          <ion-col col-6>
+          <ion-col col-4>
             <p style=" color: #187034;">CART ITEM: {{cartList.length}}</p>
   
           </ion-col>
   
-          <ion-col col-6>
+          <ion-col col-8>
             <p style=" color: #187034;">CART TOTAL: GHC {{getTotal()}}</p>
   
           </ion-col>

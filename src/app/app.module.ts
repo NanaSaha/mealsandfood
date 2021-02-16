@@ -8,8 +8,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { Geolocation } from '@ionic-native/geolocation';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { ApisProvider,CartService ,FoodCartService} from '../providers/apis/apis';
-// import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { ApisProvider, CartService, FoodCartService,CateringCartService } from '../providers/apis/apis';
+import { IonicStorageModule,Storage } from '@ionic/storage';
+// import { OneSignal } from '@ionic-native/onesignal'; 
+
+import { Angular4PaystackModule } from 'angular4-paystack';
+
+
 
 @NgModule({
   declarations: [
@@ -22,6 +27,9 @@ import { ApisProvider,CartService ,FoodCartService} from '../providers/apis/apis
     HttpModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
+    Angular4PaystackModule
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,7 +44,9 @@ import { ApisProvider,CartService ,FoodCartService} from '../providers/apis/apis
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApisProvider,
     CartService,
-    FoodCartService
+    FoodCartService,
+    CateringCartService
+    // OneSignal
   ]
 })
 export class AppModule {}

@@ -52,12 +52,16 @@
         <h2 text-wrap>
           Amount: GHc {{ item.amount}}
         </h2>
-        <h2 text-wrap *ngIf=" item.status == true">
+
+        <h2 text-wrap>
+          Status: {{ item.pay_status}}
+        </h2>
+        <!-- <h2 text-wrap *ngIf=" item.status == true">
           Status:Payment Successful
         </h2>
         <h2 text-wrap *ngIf=" item.status == false">
           Status: Pending...
-          </h2>
+          </h2> -->
         <h2 text-wrap>
           Date: {{ item.created_at | date: 'medium'}}
         </h2>

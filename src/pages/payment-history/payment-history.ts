@@ -32,6 +32,16 @@ export class PaymentHistoryPage {
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public apis: ApisProvider, public cartServ: CartService, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
     this.user_details = this.navParams.get("customer_details")
+
+      //Checking if user data is shown / logged in
+      if ( this.user_details == undefined){
+        console.log("No Login - NO User Data");
+    
+  
+      }
+
+      else{
+      
     this.body = this.user_details
     this.jsonBody = JSON.parse(this.body);
     this.user_id = this.jsonBody[0].id
@@ -75,6 +85,7 @@ export class PaymentHistoryPage {
 }
 );
   }
+}
 
 
  

@@ -1,0 +1,85 @@
+<ion-header color="ash">
+  <ion-navbar color="ash">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-row>
+      <ion-col col-12>
+        <p>
+          Caterers Location <br />
+          {{location_name}}
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="background">
+  <ion-list-header> Available Caterers close to you </ion-list-header>
+
+  <div class="center1" *ngIf="body?.length == 0">
+    <img src="assets/imgs/notavail.svg" height="50px" width="70px" />
+    <p style="color: #757575; text-align: center">
+      No Caterers can be found in this location
+    </p>
+  </div>
+
+  <ion-list no-lines *ngIf="body">
+    <ion-list *ngFor="let item of body">
+      <ion-card tappable (tap)="openMenu(item)">
+        <ion-item>
+          <ion-avatar item-start>
+            <img [src]="item.logo" />
+          </ion-avatar>
+
+          <h2 text-wrap>
+            <b
+              >{{ item.name}}
+              <ion-badge
+                class="badge"
+                *ngIf=" item.restaurants_time_status == true"
+                >Open</ion-badge
+              >
+              <ion-badge
+                class="badge"
+                id="badgecolor"
+                *ngIf=" item.restaurants_time_status == false"
+                >Closed</ion-badge
+              >
+            </b>
+          </h2>
+          <p text-wrap>{{ item.descriptions}}</p>
+          <ion-icon name="star" class="star"></ion-icon>
+          <ion-icon name="star" class="star"></ion-icon>
+          <ion-icon name="star" class="star"></ion-icon>
+          <ion-icon name="star-half" class="star"></ion-icon>
+          <br />
+
+          <p class="right" text-wrap>Delivers in {{ item.delivery_estimate}}</p>
+        </ion-item>
+      </ion-card>
+      <br />
+    </ion-list>
+  </ion-list>
+
+  <ion-list *ngIf="!body">
+    <ion-item *ngFor="let fake of fakeUsers" class="fakeItem">
+      <ion-card>
+        <ion-item>
+          <ion-avatar item-start>
+            <img [src]="" />
+          </ion-avatar>
+
+          <h2></h2>
+          <p></p>
+          <br />
+          <p></p>
+
+          <p class="right"></p>
+        </ion-item>
+      </ion-card>
+      <br />
+      <br />
+    </ion-item>
+  </ion-list>
+</ion-content>

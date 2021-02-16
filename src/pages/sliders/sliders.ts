@@ -34,8 +34,10 @@ ionViewDidLoad() {
 
 
  skip(){
-  this.navCtrl.setRoot("LoginPage")
-  // this.navCtrl.push(LoginPage) 
+
+  // this.navCtrl.setRoot("LoginPage")
+  this.navCtrl.setRoot("HomePage")  
+  
 }
 
 }

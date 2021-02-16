@@ -4,7 +4,7 @@
   <br/>
   <!-- <br/>
   <br/> -->
-  <form [formGroup]="signupForm">
+  <form [formGroup]="signupForm" class="move_form">
     <!--<ion-card class="main-view">-->
 
 
@@ -33,7 +33,7 @@
       <br/>
 
       <ion-item>
-        <ion-input type="text" placeholder="Mobile Number" formControlName="mobile_number" name="mobile_number" [class.invalid]="!signupForm.controls.mobile_number.valid && (signupForm.controls.mobile_number.dirty || submitAttempt)"></ion-input>
+        <ion-input type="number" placeholder="Mobile Number" formControlName="mobile_number" name="mobile_number" [class.invalid]="!signupForm.controls.mobile_number.valid && (signupForm.controls.mobile_number.dirty || submitAttempt)"></ion-input>
         <ion-label>
           <ion-icon ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>
         </ion-label>
@@ -80,7 +80,7 @@
 
     </ion-list>
 
-    <ion-footer>
+    <!-- <ion-footer> -->
 
       <p class="pad">
         <b style=" color: white;">
@@ -90,6 +90,6 @@
         </b>
       </p>
 
-    </ion-footer>
+    <!-- </ion-footer> -->
   </form>
 </ion-content>

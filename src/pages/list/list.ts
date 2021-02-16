@@ -32,6 +32,16 @@ export class ListPage {
   constructor(public toastCtrl: ToastController, public apis: ApisProvider, public _form: FormBuilder, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public http: Http) {
     this.user_details = this.navParams.get("customer_details")
 
+    
+      //Checking if user data is shown / logged in
+      if ( this.user_details == undefined){
+        console.log("No Login - NO User Data");
+    
+  
+      }
+
+      else{
+
     this.body = this.user_details
     this.jsonBody = JSON.parse(this.body);
     this.user_id = this.jsonBody[0].id
@@ -56,9 +66,15 @@ export class ListPage {
       this.list_details = JSON.stringify(this.body2)
       console.log("Lets see all the restaurant_details as body " + this.body2)
       console.log("Lets see all the restaurant_details " + this.list_details)
+      console.log("Lets see all the restaurant_details " + this.list_details[0].resp_code)
+      console.log("Lets see all the restaurant_details " + this.list_details.resp_code)
+      console.log("Lets see all the restaurant_details " + this.list_details['resp_code'])
+
+      // ":"101"
     });
 
     loader.dismiss();
+  }
   }
 
   createList(){
@@ -98,11 +114,37 @@ export class ListPage {
   }
 
 
-  // edit(item) {
+  edit(item) {
 
-  //   this.navCtrl.push("CreatelistPage", { listDetails: this.list_details, customer_details: this.user_details });
+   
 
-  // }
+
+
+    this.params = {
+      "id": item.id
+    }
+
+    console.log("Lets ITEM " + item)
+    console.log("Lets ITEM ID " + item.id)
+
+
+    this.apis.delete_schedule(this.params).then((result) => {
+     
+    });
+
+
+    let alert = this.alertCtrl.create({
+      title: "",
+      subTitle: "Item has been successfully removed.",
+      buttons: ['OK']
+    });
+    alert.present();
+
+    this.navCtrl.setRoot("ListPage",{customer_details: this.user_details})
+
+    //this.navCtrl.push("CreatelistPage", { listDetails: this.list_details, customer_details: this.user_details });
+
+  }
 
 
 }

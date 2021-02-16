@@ -11,57 +11,77 @@ export class ApisProvider {
     console.log('Hello ApisProvider Provider');
   }
 
-  reset_password_get_phonenumber_url ='http://mealsapi.cybercityschool.com/reset_password_get_phonenumber';
-  reset_password_get_smscode_url =  "http://mealsapi.cybercityschool.com/reset_password_get_reset_token";
-  reset_password_new_password_url = "http://mealsapi.cybercityschool.com/reset_password_new_password";
+  reset_password_get_phonenumber_url ='https://api.mealsandfood.com/reset_password_get_phonenumber';
+  reset_password_get_smscode_url =  "https://api.mealsandfood.com/reset_password_get_reset_token";
+  reset_password_new_password_url = "https://api.mealsandfood.com/reset_password_new_password";
 
-  signup_url = 'http://mealsapi.cybercityschool.com/account_creation';
-  login_url = 'http://mealsapi.cybercityschool.com/account_access';
-  retrieve_url = 'http://mealsapi.cybercityschool.com/retrieve_details'
+  update_profile_url = 'https://api.mealsandfood.com/update_user_profile';
+  send_feedback_url = 'https://api.mealsandfood.com/give_feedback';
 
-  retrieve_all_meals_url = 'http://mealsapi.cybercityschool.com/fetch_all_meals'
-  retrieve_all_menu_url = 'http://mealsapi.cybercityschool.com/fetch_all_menu'
-  retrieve_all_locations_url = 'http://mealsapi.cybercityschool.com/fetch_all_location'
+  signup_url = 'https://api.mealsandfood.com/account_creation';
+  login_url = 'https://api.mealsandfood.com/account_access';
+  retrieve_url = 'https://api.mealsandfood.com/retrieve_details'
 
-  fetch_restaurants_url = 'http://mealsapi.cybercityschool.com/fetch_restaurants/'
-  fetch_restaurants_menu_url = 'http://mealsapi.cybercityschool.com/restaurant_menu/'
-  retrieve_restaurant_menu_url = 'http://mealsapi.cybercityschool.com/retrieve_restaurant_menu'
-  meal_details_url = 'http://mealsapi.cybercityschool.com/meal_details'
-  food_details_url = 'http://mealsapi.cybercityschool.com/food_details'
+  retrieve_all_meals_url = 'https://api.mealsandfood.com/fetch_all_meals'
+  retrieve_all_menu_url = 'https://api.mealsandfood.com/fetch_all_menu'
+  retrieve_all_locations_url = 'https://api.mealsandfood.com/fetch_all_location'
 
-  process_orders_url = 'http://mealsapi.cybercityschool.com/process_orders';
-  process_food_orders_url = 'http://mealsapi.cybercityschool.com/process_food_orders';
+  fetch_restaurants_url = 'https://api.mealsandfood.com/fetch_restaurants/'
+  fetch_caterers_url = 'https://api.mealsandfood.com/fetch_caterers/'
+  fetch_restaurants_menu_url = 'https://api.mealsandfood.com/restaurant_menu/'
+  fetch_caterers_menu_url = 'https://api.mealsandfood.com/caterer_menu/'
+  retrieve_restaurant_menu_url = 'https://api.mealsandfood.com/retrieve_restaurant_menu'
+  meal_details_url = 'https://api.mealsandfood.com/meal_details'
+  food_details_url = 'https://api.mealsandfood.com/food_details'
+
+  process_orders_url = 'https://api.mealsandfood.com/process_orders';
+  process_food_orders_url = 'https://api.mealsandfood.com/process_food_orders';
+  process_catering_orders_url = 'https://api.mealsandfood.com/process_catering_orders';
   
-  save_address_url = 'http://mealsapi.cybercityschool.com/save_address'
-  update_address_url = 'http://mealsapi.cybercityschool.com/update_address'
+  save_address_url = 'https://api.mealsandfood.com/save_address'
+  update_address_url = 'https://api.mealsandfood.com/update_address'
 
-  update_list_url = 'http://mealsapi.cybercityschool.com/update_list'
-  retrieve_address_details_url = 'http://mealsapi.cybercityschool.com/retrieve_address_details'
+  update_list_url = 'https://api.mealsandfood.com/update_list'
+  retrieve_address_details_url = 'https://api.mealsandfood.com/retrieve_address_details'
 
-  order_details_url = 'http://mealsapi.cybercityschool.com/displayOrderDetails'
-  food_order_details_url = 'http://mealsapi.cybercityschool.com/displayFoodOrderDetails'
+  order_details_url = 'https://api.mealsandfood.com/displayOrderDetails'
+  food_order_details_url = 'https://api.mealsandfood.com/displayFoodOrderDetails'
+
+  catering_order_details_url = 'https://api.mealsandfood.com/displayCateringOrderDetails'
+
+
   
-  order_history_url = 'http://mealsapi.cybercityschool.com/displayOrders'
-  food_order_history_url = 'http://mealsapi.cybercityschool.com/displayFoodOrders'
+  
+  order_history_url = 'https://api.mealsandfood.com/displayOrders'
+  food_order_history_url = 'https://api.mealsandfood.com/displayFoodOrders'
+  catering_order_history_url = 'https://api.mealsandfood.com/displayCateringOrders'
 
-  fetch_foodstuff_menus_url = 'http://mealsapi.cybercityschool.com/food_menu'
+  fetch_foodstuff_menus_url = 'https://api.mealsandfood.com/food_menu'
 
-  track_order_url = 'http://mealsapi.cybercityschool.com/track_order'
+  track_order_url = 'https://api.mealsandfood.com/track_order'
 
-  create_list_url = 'http://mealsapi.cybercityschool.com/create_list'
-  retrieve_list_details_url = 'http://mealsapi.cybercityschool.com/retrieve_list_details'
-  place_weekly_order_url = 'http://mealsapi.cybercityschool.com/place_weekly_order'
+  create_list_url = 'https://api.mealsandfood.com/create_list'
+  retrieve_list_details_url = 'https://api.mealsandfood.com/retrieve_list_details'
+  place_weekly_order_url = 'https://api.mealsandfood.com/place_weekly_order'
+
+  delete_schedule_url = 'https://api.mealsandfood.com/delete_list_item'
   
 
-  order_payment_url = 'https://www.testpayapi.tk/order_payment'
-  payment_history_url = 'http://mealsapi.cybercityschool.com/payment_history'
+  order_payment_url = 'https://api.mealsandfood.com/order_payment'
+  payment_history_url = 'https://api.mealsandfood.com/payment_history'
 
-  save_special_food_requests_url = 'http://mealsapi.cybercityschool.com/save_food_special_requests'
-
-
-  retrieve_all_foods_url = 'http://mealsapi.cybercityschool.com/fetch_all_foods'
+  save_special_food_requests_url = 'https://api.mealsandfood.com/save_food_special_requests'
 
 
+  retrieve_all_foods_url = 'https://api.mealsandfood.com/fetch_all_foods'
+
+
+  retrieve_delivery_charges_url = 'https://api.mealsandfood.com/retrieve_delivery_charge'
+
+
+  retrieve_loyalty_url = 'https://api.mealsandfood.com/loyalty_points'
+
+  time_slot_url = 'https://api.mealsandfood.com/time_slot'
 
 
   save_special_request_food(data) {
@@ -143,8 +163,18 @@ export class ApisProvider {
     });
   }
 
-
-
+  
+  
+    retrieve_loyalty_points(data) {
+       return new Promise((resolve, reject) => {
+      this.http.post(this.retrieve_loyalty_url, JSON.stringify(data))
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
 
   retrieve_all_meals() {
     return new Promise((resolve, reject) => {
@@ -168,6 +198,20 @@ export class ApisProvider {
     });
   }
 
+  retrieve_time_slot() {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.time_slot_url)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+
+  
+
   retrieve_all_locations() {
     return new Promise((resolve, reject) => {
       this.http.get(this.retrieve_all_locations_url)
@@ -190,6 +234,18 @@ export class ApisProvider {
     });
   }
 
+  retrieve_delivery_charges() {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.retrieve_delivery_charges_url)     
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+
   fetch_restaurants(data) {
     return new Promise((resolve, reject) => {
       this.http.get(this.fetch_restaurants_url + data, data)
@@ -201,9 +257,35 @@ export class ApisProvider {
     });
   }
 
+
+
+    fetch_caterers(data) {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.fetch_caterers_url + data, data)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
   fetch_restaurant_menus(data) {
     return new Promise((resolve, reject) => {
       this.http.get(this.fetch_restaurants_menu_url + data, data)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+
+
+    fetch_catering_menus(data) {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.fetch_caterers_menu_url + data, data)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -286,6 +368,18 @@ export class ApisProvider {
     });
   }
 
+
+    process_catering_order(data) {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.process_catering_orders_url, JSON.stringify(data))
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
   
 
   order_details(data) {
@@ -309,6 +403,19 @@ export class ApisProvider {
         });
     });
   }
+
+    catering_order_details(data) {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.catering_order_details_url, JSON.stringify(data))
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  
   
   order_history(data) {
     return new Promise((resolve, reject) => {
@@ -324,6 +431,19 @@ export class ApisProvider {
   food_order_history(data) {
     return new Promise((resolve, reject) => {
       this.http.post(this.food_order_history_url, JSON.stringify(data))
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+
+
+   catering_order_history(data) {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.catering_order_history_url, JSON.stringify(data))
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -410,6 +530,19 @@ export class ApisProvider {
     });
   }
 
+  delete_schedule(data) {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.delete_schedule_url, JSON.stringify(data))
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  
+
 
   reset_password_get_phonenumber(data) {
     return new Promise((resolve, reject) => {
@@ -445,11 +578,153 @@ export class ApisProvider {
     });
   }
 
-  
-  
+  update_profile(data) {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.update_profile_url, JSON.stringify(data))
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+
+  send_feedback(data) {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.send_feedback_url, JSON.stringify(data))
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
 
 }
 
+
+
+
+// CATERING CART SERVICES
+export class CateringMenuItem {
+  id: number;
+  catering_meals_id: string;
+  meal_name: string;
+  price: number;
+  discount: string;
+  meal_logo_url: string;
+
+  constructor(id: number,catering_meals_id: string, meal_name: string, price: number, discount: string, meal_logo_url: string) {
+    this.id = id;
+    this.catering_meals_id = catering_meals_id;
+    this.meal_name = meal_name;
+    this.price = price;
+    this.discount = discount;
+    this.meal_logo_url = meal_logo_url;
+  }
+}
+
+
+
+
+export class CateringCartItem {
+
+  id: number;
+  meal_name: string;
+  catering_meals_id: string;
+  price: number;
+  discount: string;
+  quantity: number;
+  meal_logo_url: string;
+
+  constructor(item: CateringMenuItem, quantity: number) {
+    this.id = item.id;
+    this.catering_meals_id = item.catering_meals_id;
+    this.meal_name = item.meal_name;
+    this.price = item.price;
+    this.discount = item.discount;
+    this.quantity = quantity;
+    this.meal_logo_url = item.meal_logo_url;
+
+  }
+}
+
+
+@Injectable()
+export class CateringCartService {
+  list: Array<CateringCartItem>;
+
+  constructor() {
+    this.list = []
+  }
+
+  getAllCateringCartItems() {
+    return this.list;
+  }
+
+  addItem(product: CateringMenuItem, quantity: number) {
+
+    var isExists: boolean = false;
+    // var id = product.id;
+    var id = product.catering_meals_id;
+
+    for (var i = 0; i < this.list.length; i++) {
+      if (this.list[i].catering_meals_id == id) {
+        this.list[i].quantity += quantity;
+        isExists = true;
+        break;
+      }
+    }
+    if (!isExists) {
+      this.list.push(new CateringCartItem(product, quantity));
+    }
+  }
+
+  quantityPlus(item) {
+    item.quantity += 1.00;
+  }
+
+  quantityMinus(item) {
+    item.quantity -= 1.00;
+  }
+
+  removeItemById(id) {
+    for (var i = 0; i < this.list.length; i++) {
+      if (this.list[i].id == id) {
+        this.list.splice(i, 1);
+        break;
+      }
+    }
+  }
+
+
+  removeallcart() {
+    // return  this.list = []
+    for (var i = 0; i < this.list.length; i++) {
+      if (this.list[i]) {
+        this.list.splice(i, 0);
+        return  this.list = []
+        
+      }
+    }
+  }
+
+
+  getGrandTotal(): number {
+    var amount = 0;
+    for (var i = 0; i < this.list.length; i++) {
+      amount += (this.list[i].price * this.list[i].quantity);
+    }
+    return amount;
+  }
+
+
+
+ }
+
+
+//CETERIN CART END
 
 export class MenuItem {
   id: number;
@@ -651,27 +926,36 @@ export class FoodCartService {
     }
   }
 
-  quantityPlus(item) {
-  //   console.log(item)
-  //   console.log(item.price)
-    //item.price += parseFloat('1').toFixed(1);;
 
-   item.price += 1;
-   
+
+  quantityPlus(item) {
+    item.quantity += 1;
   }
 
   quantityMinus(item) {
-    item.price -= 1.00;
+    item.quantity -= 1;
   }
 
-  removeItemById(id) {
+  // removeItemById(id) {
+  //   for (var i = 0; i < this.list.length; i++) {
+  //     if (this.list[i].id == id) {
+  //       this.list.splice(i, 1);
+  //       break;
+  //     }
+  //   }
+  // }
+
+  removeItemById(item) {
+    var id = item;
     for (var i = 0; i < this.list.length; i++) {
-      if (this.list[i].id == id) {
+      if (this.list[i].food_id == id) {
         this.list.splice(i, 1);
         break;
       }
     }
   }
+
+  
 
   removeallfoodcart() {
     // return  this.list = []

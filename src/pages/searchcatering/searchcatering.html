@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Find Catering Services</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content overflow-scroll="true" class="background">
+  <div class="padding">
+    <b class="pad">
+      <!-- <img src="assets/imgs/mnf.png" width="50%" /> -->
+      <img src="assets/imgs/logo.png" width="50%" />
+    </b>
+  </div>
+
+  <p>
+    <b>Find Catering Services</b>
+  </p>
+  <form [formGroup]="searchForm">
+    <ion-item>
+      <ion-label>Location</ion-label>
+      <ionic-selectable
+        item-content
+        [(ngModel)]="location"
+        [items]="locations"
+        itemValueField="id"
+        itemTextField="location_name"
+        [canSearch]="true"
+        (onChange)="locationChange($event)"
+        formControlName="location_name"
+        name="location_name"
+        [class.invalid]="!searchForm.controls.location_name.valid && (searchForm.controls.location_name.dirty || submitAttempt)"
+      >
+      </ionic-selectable>
+    </ion-item>
+    <br />
+
+    <br />
+    <br />
+    <div class="">
+      <b class="pad">
+        <button
+          ion-button
+          class="button button-dark customBtn"
+          [disabled]="!this.searchForm.valid"
+          color="danger"
+          (tap)="restaurants()"
+        >
+          Find Caterers
+        </button>
+      </b>
+    </div>
+  </form>
+</ion-content>

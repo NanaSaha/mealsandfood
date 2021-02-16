@@ -1,17 +1,38 @@
 <ion-menu [content]="content" >
-  <ion-header >
+  <!-- <ion-header >
     <ion-toolbar >
       <ion-title >Menu</ion-title>
     </ion-toolbar>
-  </ion-header>
+  </ion-header> -->
 
   <ion-content id="background2">
+      <div class="padding-icon">
+          <img src="assets/icon/male.png" width="30%" />
+      </div>
+
+      <ion-list *ngIf = "customer_details == undefined">
+      
+      <button ion-button color="primary" outline (tap)="login()" > Click to Login / Signup</button>
+    </ion-list>
+
+    <ion-list *ngIf = "customer_details != undefined">
+      <p class="down1">{{first_name}} {{last_name}} </p>
+      <button ion-button color="primary" outline (tap)="edit(item)"> Edit Profile</button>
+      <button ion-button color="secondary" outline (tap)="logout_func()"> Logout</button>
+    </ion-list>
+
+       
+
     <ion-list class="sidelist">
       <button menuClose ion-item  id="background2" class="pad" *ngFor="let p of pages" (click)="openPage(p)">
           <!-- <ion-icon [name]="p.icon" item-left></ion-icon> -->
           {{p.title}}
       </button>
+
+      <ion-footer> <p class="footer-font">Designed & Developed By <span > <a class="footer-font2" href="https://www.devdexsoftware.com">Devdex Software </a> </span></p></ion-footer>
     </ion-list>
+
+
   </ion-content>
 
 </ion-menu>

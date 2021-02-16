@@ -19,6 +19,8 @@ export class FoodOrderDetailsPage {
   order_id: any;
   list: any;
   user_details;
+  total_price;
+  orderlist;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public apis: ApisProvider,public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
     this.orderJson = this.navParams.get('value')
@@ -43,10 +45,14 @@ export class FoodOrderDetailsPage {
 
       this.orderJson = JSON.stringify(result)
       this.order_id = result['order_id']
+      this.orderlist = result['order_details']
+      this.total_price = this.orderlist[0].total_price
       
 
+      console.log('LIST ' + this.list);
       console.log('LETS SEE THE PROCESS ORDER ' + this.orderJson);
       console.log('LETS SEE THE ORDER ID IN PROCESS ORDER ' + this.order_id);
+      console.log('TOTAL PRICE'  + this.total_price);
 
       loader.dismiss();
        

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Your MnF rewards points</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="background">
+  <div *ngIf="points">
+    <p class="middley">
+      You have
+      <span style="color: #ffc107; font-size: 40px"> {{points}}</span> MnF
+      rewards points
+    </p>
+
+    <ion-item no-lines class="center">
+      <img src="assets/imgs/online-shopping.svg" class="imgsize" />
+    </ion-item>
+
+    <div *ngIf="points < 10000">
+      <p class="middley">
+        You need a minimum points of 10000 to be able to redeem. Keep shopping!
+      </p>
+    </div>
+    <div class="move-but" *ngIf="points > 10000">
+      <button
+        ion-button
+        color="primary"
+        outline
+        icon-end
+        text-wrap
+        (tap)="redeem()"
+      >
+        Redeem Points for GHc50
+      </button>
+    </div>
+  </div>
+
+  <div class="center1" *ngIf="points == undefined || points == ' '" text-wrap>
+    <img src="assets/imgs/notavail.svg" height="50px" width="70px" />
+    <p style="color: #757575; text-align: center">No Deals Available</p>
+  </div>
+
+  <div>
+    <img src="assets/imgs/bonanza.jpg" />
+  </div>
+</ion-content>

@@ -1,0 +1,272 @@
+page-cateringlist {
+  .background {
+    background-image: url("../assets/imgs/white_background.png");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-content: center;
+    text-align: center;
+    opacity: 1;
+  }
+
+  .badge-md {
+    border-radius: 4px;
+    color: #fff;
+    background-color: #781 !important;
+  }
+
+  #badgecolor {
+    background-color: rgb(25, 4, 116) !important;
+  }
+
+  .center1 {
+    text-align: center;
+    padding-top: 30%;
+  }
+
+  .star {
+    margin: auto;
+    float: left;
+    //   font-size: 60px;
+    color: #f2b632;
+  }
+
+  .right {
+    text-align: right;
+  }
+
+  .wide {
+    width: 100%;
+  }
+
+  ion-card.card {
+    //   margin-top: 5px;
+    margin-bottom: -18px;
+  }
+
+  .header {
+    color: white;
+  }
+
+  .ash {
+    background-color: #d6d6d6;
+    // color: white;
+  }
+
+  .right {
+    margin-top: 8%;
+    margin-left: 20%;
+    right: 10px;
+    // font-size: 150%;
+  }
+
+  .card-style {
+    // margin-top: 50%;
+    padding-top: 10%;
+    margin-left: 2%;
+    // right: 50px;
+  }
+  .card-style2 {
+    // // margin-top: 50%;
+    // padding-top: 10%;
+    margin-left: 2%;
+    // right: 50px;
+  }
+
+  //new
+  @media screen and (max-width: 599px) {
+    .column_background {
+      background-color: #faf9f9;
+
+      opacity: 1;
+    }
+
+    .left {
+      float: left;
+      margin: auto;
+      margin-left: 6%;
+    }
+
+    .center1 {
+      text-align: center;
+      padding-top: 30%;
+    }
+
+    .star {
+      margin: auto;
+      float: left;
+      color: #f2b632;
+      font-size: 14px;
+    }
+    .star1 {
+      margin: auto;
+      float: left;
+    }
+
+    .item-md ion-avatar img {
+      border-radius: 50%;
+      overflow: hidden;
+      width: 80px;
+      height: 80px;
+    }
+
+    .item-ios ion-avatar img {
+      border-radius: 50%;
+      overflow: hidden;
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  @media screen and (max-width: 1366px) and (min-width: 600px) {
+    .list-header-md {
+      padding-left: 16px;
+      margin-bottom: 13px;
+      min-height: 4.5rem;
+      border-top: 1px solid #dedede;
+      font-size: 2.4rem;
+      color: #757575;
+    }
+
+    .list-header-ios {
+      padding-left: 16px;
+      margin-bottom: 13px;
+      min-height: 4.5rem;
+      border-top: 1px solid #dedede;
+      font-size: 2.4rem;
+      color: #757575;
+    }
+
+    form {
+      margin: 0;
+      font: inherit;
+      color: inherit;
+      padding-top: 10%;
+      width: 80%;
+      height: 50%;
+      text-align: center;
+      margin-left: 10%;
+    }
+
+    .button.customBtn {
+      width: 30%;
+      height: 65px;
+      font-size: 24px;
+    }
+
+    .column_background {
+      background-color: #faf9f9;
+
+      opacity: 1;
+    }
+
+    .item-md ion-avatar img {
+      border-radius: 50%;
+      overflow: hidden;
+      width: 113px;
+      height: 110px;
+      margin-top: -45%;
+    }
+
+    .item-ios ion-avatar img {
+      border-radius: 50%;
+      overflow: hidden;
+      width: 113px;
+      height: 110px;
+      margin-top: -45%;
+    }
+
+    .left {
+      float: left;
+      margin: auto;
+      margin-left: 3%;
+    }
+
+    .star {
+      margin: auto;
+      // float: left;
+      color: #f2b632;
+      font-size: 2.5rem;
+    }
+    .star1 {
+      // margin: auto;
+      float: left;
+    }
+
+    p {
+      overflow: inherit;
+      font-size: 1.9rem !important;
+    }
+
+    h2 {
+      margin: 2px 0;
+      font-size: 2.5rem !important;
+      font-weight: normal;
+    }
+  }
+
+  .fakeItem {
+    // h2, h3, p {
+    //   background-color: lightgrey;
+    //   opacity: 0.5;
+    //   height: 1em;
+    //   margin-top: 10px;
+    // }
+
+    // h2 {
+    //   width: 35%;
+    // }
+
+    // h3 {
+    //   width: 40%;
+    // }
+
+    // p {
+    //   width: 60%;
+    // }
+
+    @keyframes animatedBar {
+      0% {
+        background-position: -406px 0;
+      }
+      100% {
+        background-position: 0 0;
+      }
+    }
+
+    h2,
+    h3,
+    p {
+      background-color: lightgrey;
+      opacity: 0.5;
+      height: 1em;
+      margin-top: 10px;
+      position: relative;
+      background: linear-gradient(to right, #dddddd, #eeeeee);
+      animation: animatedBar 700ms linear infinite;
+
+      &:after {
+        position: absolute;
+        display: block;
+        content: "";
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background-color: white;
+      }
+    }
+
+    h2:after {
+      width: 65%;
+    }
+
+    h3:after {
+      width: 60%;
+    }
+
+    p:after {
+      width: 40%;
+    }
+  }
+}

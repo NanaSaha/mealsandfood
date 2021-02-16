@@ -1,0 +1,194 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Catering Checkout</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let item of body2">
+    <ion-row class="container">
+      <ion-col col-9>
+        <h2 style="color: #781318">Default Delivery Address</h2>
+        <p style="font-size: 13px !important" text-wrap>
+          {{item.address_name}} <br />{{item.landmark}} <br />{{mobile_number}}
+        </p>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button color="secondary" outline (tap)="edit(item)">
+          Edit
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-item>
+
+  <ion-list *ngIf="!body2">
+    <ion-list-header
+      *ngFor="let fake of fakeUsers; let i = index"
+      no-lines
+      no-padding
+      class="fakeItem"
+    >
+      <ion-row class="container">
+        <ion-col col-9>
+          <h2></h2>
+          <p style="font-size: 13px !important" text-wrap>
+            <br />
+            <br />
+          </p>
+        </ion-col>
+        <ion-col col-3>
+          <button ion-button color="secondary" outline>Edit</button>
+        </ion-col>
+      </ion-row>
+    </ion-list-header>
+  </ion-list>
+
+  <ion-item no-lines *ngFor="let item of cartList">
+    <ion-row class="container">
+      <ion-col col-9 text-wrap>
+        <h2 text-wrap>{{ item.meal_name}}</h2>
+        <p style="font-size: 13px !important" *ngIf="item.quantity > 0">
+          Quantity x {{ item.quantity}}
+        </p>
+      </ion-col>
+      <ion-col col-3 class="move-down">
+        <p text-wrap>Ghc {{ item.price | number:'1.2-2'}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-item>
+
+  <ion-item>
+    <ion-row>
+      <ion-col col-8>
+        <p text-wrap>Subtotal</p>
+      </ion-col>
+      <ion-col col-4>
+        <p text-wrap>Ghc {{getTotal() | number:'1.2-2'}}</p>
+      </ion-col>
+
+      <ion-col col-8>
+        <p text-wrap>Service Fee</p>
+      </ion-col>
+      <ion-col col-4>
+        <p text-wrap>
+          Ghc {{(getTotal()* service_fee ) + delivery_fee | number:'1.2-2'}}
+        </p>
+      </ion-col>
+
+      <!-- SHOW REDEEEMABLE POINTS -->
+      <div *ngIf="points > 9999">
+        <ion-col col-8>
+          <p text-wrap>Loyalty Point Redeemed</p>
+        </ion-col>
+        <ion-col col-4>
+          <p text-wrap>( Ghc {{redeemable_amount | number:'1.2-2'}} )</p>
+          <p text-wrap>( Ghc 50.00 )</p>
+        </ion-col>
+
+        <ion-col col-8>
+          <p text-wrap>Total Amount</p>
+        </ion-col>
+        <ion-col col-4>
+          <p text-wrap>
+            Ghc {{(getTotal() - 50) + (getTotal()* service_fee ) + delivery_fee
+            | number:'1.2-2'}}
+          </p>
+        </ion-col>
+      </div>
+
+      <!-- DONT SHOW REDEEEMABLE POINTS -->
+      <div *ngIf="points < 10000">
+        <ion-col col-8>
+          <p text-wrap>Total Amount</p>
+        </ion-col>
+        <ion-col col-4>
+          <p text-wrap>
+            Ghc {{(getTotal()) + (getTotal()* service_fee ) + delivery_fee |
+            number:'1.2-2'}}
+          </p>
+        </ion-col>
+      </div>
+    </ion-row>
+  </ion-item>
+
+  <ion-item no-lines>
+    <h2 style="color: #781318">Special Request (optional)</h2>
+  </ion-item>
+  <ion-item>
+    <ion-input
+      type="text"
+      placeholder="Type here..."
+      [(ngModel)]="SpecialRequest"
+    ></ion-input>
+  </ion-item>
+
+  <!-- <ion-item no-lines>
+    <h2>Discount Voucher</h2>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="text" placeholder="Voucher Code"></ion-input>
+  </ion-item> -->
+
+  <ion-item no-lines>
+    <h2 style="color: #781318">
+      <b>Specify Delivery Location</b>
+    </h2>
+  </ion-item>
+
+  <ion-list radio-group [(ngModel)]="yesorno">
+    <ion-item no-lines>
+      <ion-label> Default Location</ion-label>
+      <!-- <ion-radio checked = "true" value="N" checked></ion-radio> -->
+
+      <ion-radio checked="true" value="N"></ion-radio>
+    </ion-item>
+
+    <ion-item no-lines>
+      <ion-label> Change Delivery Location</ion-label>
+      <ion-radio value="Y"></ion-radio>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="yesorno == 'Y'">
+    <ion-item no-lines>
+      <h2 style="color: #781318">New Delivery Location</h2>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        type="text"
+        placeholder="Enter Your new Delivery Location"
+        [(ngModel)]="NewLocation"
+      ></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-item no-lines>
+    <h2 style="color: #781318">
+      <b>Choose Delivery Time</b>
+    </h2>
+  </ion-item>
+
+  <ion-list radio-group *ngFor="let item of time" [(ngModel)]="time_selected">
+    <ion-item no-lines>
+      <ion-label> {{item.time | date: 'medium' }}</ion-label>
+      <p>rttd</p>
+
+      <ion-radio [value]="item.time"></ion-radio>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <p>
+    <button
+      ion-button
+      color="secondary"
+      class="button button-dark customBtn"
+      (tap)="checkout()"
+    >
+      Proceed to Pay
+    </button>
+  </p>
+</ion-footer>

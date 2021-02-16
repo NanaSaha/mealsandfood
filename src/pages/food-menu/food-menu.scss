@@ -17,6 +17,25 @@ page-food-menu {
     
     }
 
+    .movemove{
+        margin-left: -6%
+      
+      }
+
+      .item-inner {
+        margin: 0;
+        padding: 0;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        overflow: visible !important;
+      }
+
+      .input-wrapper {
+        overflow: visible !important;
+      }
+
     .center1{
         text-align: center;
        padding-top: 30%
@@ -73,6 +92,7 @@ page-food-menu {
 
    .move-center{
     padding-left: 50%;
+    margin-top: 20%;
     color: green;
     font-size: 30px;
    }

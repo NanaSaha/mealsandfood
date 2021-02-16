@@ -52,57 +52,37 @@
 
 </ion-content> -->
 
-<div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">
+<!-- <div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">
   <div class="flb">
     <div class="Aligner-item Aligner-item--top"></div>
-    <img src="assets/icon/mlogo.png">
+  
+    <img src="assets/imgs/logo.png">
   
     <div class="Aligner-item Aligner-item--bottom"></div>
   </div>
-</div>
+</div> -->
 
-<ion-content overflow-scroll='true' class="background">
-  <ion-slides  loop="true" speed="2000" autoplayDisableOnInteraction="false" pager>
-    
+<ion-content overflow-scroll="true" class="background2">
+  <div class="move_text_down">
+    <h2>
+      <b style="color: white"> Your Meals! Your Groceries! </b>
+    </h2>
+    <p text-wrap style="color: white">
+      Get all your groceries & meals from your favorite restaurants delivered
+      instantly without any hassle!
+    </p>
 
-
-<ion-slide class="background">
-  <div class="padding-icon">
-  <img src="assets/imgs/groce3.png" width="70%" />
-</div>
-
-<h2>
-  <b text-wrap> Need some Groceries?</b>
-</h2>
-<p text-wrap>Get your Groceries delivered to you instantly!</p>
-
-
-
-<div class="padding">
-  <b class="pad">
-    <button ion-button color="primary" class="button button-dark customBtn" (tap)="skip()"><b>Get Started </b> </button>
-  </b>
-</div>
-</ion-slide>
-
-
-<ion-slide class="background">
-  <div class="padding-icon">
-  <img src="assets/imgs/welcome_food.png" width="70%" />
-</div>
-
-<h2>
-  <b> Feeling Hungry?</b>
-</h2>
-<p text-wrap>We would deliver your food right to your doorstep</p>
-
-
-
-<div class="padding">
-  <b class="pad">
-    <button ion-button color="primary" class="button button-dark customBtn" (tap)="skip()"><b>Get Started</b> </button>
-  </b>
-</div>
-</ion-slide>
-</ion-slides>
+    <div class="padding">
+      <b class="pad">
+        <button
+          ion-button
+          color="primary"
+          class="button button-dark customBtn"
+          (tap)="skip()"
+        >
+          <b>Get Started</b>
+        </button>
+      </b>
+    </div>
+  </div>
 </ion-content>

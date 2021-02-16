@@ -1,11 +1,8 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>Find Restaurants</ion-title>
   </ion-navbar>
-
 </ion-header>
-
 
 <!-- <ion-content class="ash">
   <form [formGroup]="searchForm">
@@ -35,43 +32,66 @@
 <ion-footer id="background-image">
 </ion-footer> -->
 
-<ion-content overflow-scroll='true' class="background">
-  
-
-
+<ion-content overflow-scroll="true" class="background">
   <div class="padding">
-     <b class="pad">
+    <b class="pad">
       <!-- <img src="assets/imgs/mnf.png" width="50%" /> -->
-      <img src="assets/icon/mlogo.png" width="50%" >
-    </b> 
+      <img src="assets/imgs/logo.png" width="50%" />
+    </b>
   </div>
 
   <p>
     <b>Find Restaurants</b>
   </p>
   <form [formGroup]="searchForm">
-  <ion-item >
-    <ion-label >Location</ion-label>
-    <ionic-selectable item-content [(ngModel)]="location" [items]="locations" itemValueField="id" itemTextField="location_name"
-      [canSearch]="true" (onChange)="locationChange($event)" formControlName="location_name" name="location_name" [class.invalid]="!searchForm.controls.location_name.valid && (searchForm.controls.location_name.dirty || submitAttempt)">
-    </ionic-selectable>
-  </ion-item>
-  <br>
-  <ion-item >
-    <ion-label >Meals</ion-label>
-    <ionic-selectable item-content [(ngModel)]="meal" [items]="meals" itemValueField="id" itemTextField="name" [canSearch]="true"
-      (onChange)="mealChange($event)" formControlName="name" name="name" [class.invalid]="!searchForm.controls.name.valid && (searchForm.controls.name.dirty || submitAttempt)">
-    </ionic-selectable>
-  </ion-item>
+    <ion-item>
+      <ion-label>Location</ion-label>
+      <ionic-selectable
+        item-content
+        [(ngModel)]="location"
+        [items]="locations"
+        itemValueField="id"
+        itemTextField="location_name"
+        [canSearch]="true"
+        (onChange)="locationChange($event)"
+        formControlName="location_name"
+        name="location_name"
+        [class.invalid]="!searchForm.controls.location_name.valid && (searchForm.controls.location_name.dirty || submitAttempt)"
+      >
+      </ionic-selectable>
+    </ion-item>
+    <br />
+    <ion-item>
+      <ion-label>Meals</ion-label>
+      <ionic-selectable
+        item-content
+        [(ngModel)]="meal"
+        [items]="meals"
+        itemValueField="id"
+        itemTextField="name"
+        [canSearch]="true"
+        (onChange)="mealChange($event)"
+        formControlName="name"
+        name="name"
+        [class.invalid]="!searchForm.controls.name.valid && (searchForm.controls.name.dirty || submitAttempt)"
+      >
+      </ionic-selectable>
+    </ion-item>
 
-  <br>
-  <br>
-  <div class="">
-    <b class="pad">
-      <button ion-button class="button button-dark customBtn" [disabled]="!this.searchForm.valid" color="danger" (tap)="restaurants()"> Find Restaurants </button>
-
-    </b>
-  </div>
-</form>
-
+    <br />
+    <br />
+    <div class="">
+      <b class="pad">
+        <button
+          ion-button
+          class="button button-dark customBtn"
+          [disabled]="!this.searchForm.valid"
+          color="danger"
+          (tap)="restaurants()"
+        >
+          Find Restaurants
+        </button>
+      </b>
+    </div>
+  </form>
 </ion-content>

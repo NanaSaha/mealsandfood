@@ -1,35 +1,28 @@
 page-payment {
+  .move-down {
+    padding-top: 5%;
+  }
 
-    .move-down{
-        padding-top: 5%;
-        
-       }
+  .center {
+    text-align: center;
+  }
+  .btn-primary {
+    background-color: transparent !important;
+    font-size: 17px !important;
+  }
 
-       .center{
-
-        text-align: center;
-    }
-
-.button.customBtn{
-    width:100%;
-    margin-top: -25px;
-    // z-index: 9;
-}
-
-.background{
-
-    
-    background-image: url("../assets/imgs/white_background.png");  
+  .background {
+    background-image: url("../assets/imgs/white_background.png");
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     align-content: center;
-    text-align:center;
-    opacity: 1.0; 
-}
+    text-align: center;
+    opacity: 1;
+  }
 
-.item-md {
+  .item-md {
     // padding-left: 16px;
     // padding-right: 0;
     // position: relative;
@@ -42,6 +35,5 @@ page-payment {
     // box-shadow: none;
     // -webkit-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
     // transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
+  }
 }

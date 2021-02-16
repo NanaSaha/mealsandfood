@@ -1,89 +1,159 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Order History</ion-title>
+  </ion-navbar>
+</ion-header>
 
+<ion-content class="background">
+  <ion-segment [(ngModel)]="order_history" overflow-scroll="true">
+    <ion-segment-button value="Foodstuffs" text-wrap>
+      Foodstuffs History
+    </ion-segment-button>
 
+    <ion-segment-button class="segment-button" value="Meals" text-wrap>
+      Meals Order History
+    </ion-segment-button>
 
-  <ion-header>
-      <ion-navbar>
-        <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-        </button>
-        <ion-title>Order History</ion-title>
-      </ion-navbar>
-    </ion-header>
-  
-  
-  <ion-content class="background">
-      <ion-segment [(ngModel)]="order_history" overflow-scroll='true'>
-          <ion-segment-button value="Foodstuffs" text-wrap>
-              Foodstuffs History
-            </ion-segment-button>
-        
-        
-        <ion-segment-button class="segment-button" value="Meals" text-wrap>
-            Meals Order History
-          </ion-segment-button>
-          
-      
-        </ion-segment>
-  
-        <div [ngSwitch]="order_history">
-            <ion-list *ngSwitchCase="'Meals'" overflow-scroll='true'>
+    <ion-segment-button class="segment-button" value="Catering" text-wrap>
+      Catering Order History
+    </ion-segment-button>
+  </ion-segment>
 
-    <ion-card>
-  
-          <div class="center1" *ngIf="list?.length == 0 || body?.length == null" text-wrap>
-              <img src="assets/imgs/notavail.svg" height="50px" width="70px" />
-              <p style="color: #757575; text-align: center"> Order History Not Available</p>
-            </div>
-
-    
-
-         <ion-list *ngFor="let q of list">
-        <ion-item>
-  
-          <p> Order ID: {{q.order_id}}</p>
-           <p> Order Date: {{q.order_date | date: 'medium'}}</p>
-          <p *ngIf="q.delivered == true">Order Status: Delivered</p>
-           <p *ngIf="q.delivered == false">Order Status: Preparing For delivery</p>
-            <p> <button ion-button color="secondary" class="button button-dark customBtn"  (tap)="details(q)"> View Details</button></p>
-            <p> <button ion-button color="primary" class="button button-dark customBtn"  (tap)="track(q)"> Track Order</button></p>
-        </ion-item>
-        </ion-list>
-     
-    </ion-card>
-  </ion-list>
-
-
-  <ion-list *ngSwitchCase="'Foodstuffs'" overflow-scroll='true'>
-
+  <div [ngSwitch]="order_history">
+    <ion-list *ngSwitchCase="'Meals'" overflow-scroll="true">
       <ion-card>
-    
-            <div class="center1" *ngIf="list2?.length == 0 || body?.length == null" text-wrap>
-                <img src="assets/imgs/notavail.svg" height="50px" width="70px" />
-                <p style="color: #757575; text-align: center"> Order History Not Available</p>
-              </div>
-  
-      
-  
-           <ion-list *ngFor="let q of list2">
+        <div
+          class="center1"
+          *ngIf="list?.length == 0 || body?.length == null"
+          text-wrap
+        >
+          <img src="assets/imgs/notavail.svg" height="50px" width="70px" />
+          <p style="color: #757575; text-align: center">
+            Order History Not Available
+          </p>
+        </div>
+
+        <ion-list *ngFor="let q of list">
           <ion-item>
-    
-            <p> Order ID: {{q.order_id}}</p>
-             <p> Order Date: {{q.order_date | date: 'medium'}}</p>
+            <p>Order ID: {{q.order_id}}</p>
+            <p>Order Date: {{q.order_date | date: 'medium'}}</p>
             <p *ngIf="q.delivered == true">Order Status: Delivered</p>
-             <p *ngIf="q.delivered == false">Order Status: Preparing For delivery</p>
-              <p> <button ion-button color="secondary" class="button button-dark customBtn"  (tap)="details2(q)"> View Details</button></p>
-              <!-- <p> <button ion-button color="primary" class="button button-dark customBtn"  (tap)="track(q)"> Track Order</button></p>
-          --> </ion-item>
-          </ion-list>
-       
+            <p *ngIf="q.delivered == false">
+              Order Status: Preparing For delivery
+            </p>
+            <p>
+              <button
+                ion-button
+                color="secondary"
+                class="button button-dark customBtn"
+                (tap)="details(q)"
+              >
+                View Details
+              </button>
+            </p>
+            <p>
+              <button
+                ion-button
+                color="primary"
+                class="button button-dark customBtn"
+                (tap)="track(q)"
+              >
+                Track Order
+              </button>
+            </p>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'Foodstuffs'" overflow-scroll="true">
+      <ion-card>
+        <div
+          class="center1"
+          *ngIf="list2?.length == 0 || body?.length == null"
+          text-wrap
+        >
+          <img src="assets/imgs/notavail.svg" height="50px" width="70px" />
+          <p style="color: #757575; text-align: center">
+            Order History Not Available
+          </p>
+        </div>
+
+        <ion-list *ngFor="let q of list2">
+          <ion-item>
+            <p>Order ID: {{q.order_id}}</p>
+            <p>Order Date: {{q.order_date | date: 'medium'}}</p>
+            <!-- <p> Total Amount: {{q.total_price}}</p> -->
+            <!-- <p *ngIf="q.delivered == true">Order Status: Delivered</p>
+             <p *ngIf="q.delivered == false">Order Status: Preparing For delivery</p> -->
+            <p>
+              <button
+                ion-button
+                color="secondary"
+                class="button button-dark customBtn"
+                (tap)="details2(q)"
+              >
+                View Details
+              </button>
+            </p>
+            <!-- <p> <button ion-button color="primary" class="button button-dark customBtn"  (tap)="track(q)"> Track Order</button></p>
+          -->
+          </ion-item>
+        </ion-list>
+      </ion-card>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'Catering'" overflow-scroll="true">
+      <ion-card>
+        <div
+          class="center1"
+          *ngIf="list2?.length == 0 || body?.length == null"
+          text-wrap
+        >
+          <img src="assets/imgs/notavail.svg" height="50px" width="70px" />
+          <p style="color: #757575; text-align: center">
+            Order History Not Available
+          </p>
+        </div>
+
+        <ion-list *ngFor="let q of list3">
+          <ion-item>
+            <p>Order ID: {{q.order_id}}</p>
+            <p>Order Date: {{q.order_date | date: 'medium'}}</p>
+            <!-- <p> Total Amount: {{q.total_price}}</p> -->
+            <!-- <p *ngIf="q.delivered == true">Order Status: Delivered</p>
+             <p *ngIf="q.delivered == false">Order Status: Preparing For delivery</p> -->
+            <p>
+              <button
+                ion-button
+                color="secondary"
+                class="button button-dark customBtn"
+                (tap)="details3(q)"
+              >
+                View Details
+              </button>
+            </p>
+            <!-- <p> <button ion-button color="primary" class="button button-dark customBtn"  (tap)="track(q)"> Track Order</button></p>
+          -->
+          </ion-item>
+        </ion-list>
       </ion-card>
     </ion-list>
   </div>
-  </ion-content>
+</ion-content>
 
-  <ion-footer >
-      <p>
-        <button ion-button color="dark" class="button button-dark customBtn" (tap)="home()"> Continue Order </button>
-      </p>
-    
-    </ion-footer>
+<ion-footer>
+  <p>
+    <button
+      ion-button
+      color="dark"
+      class="button button-dark customBtn"
+      (tap)="home()"
+    >
+      Continue Order
+    </button>
+  </p>
+</ion-footer>

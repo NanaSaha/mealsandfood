@@ -36,7 +36,7 @@ export class AddressPage {
   user_id: any;
   user_details: any;
   from_checkout: any;
-  
+  order_id: any;
 
   address = { address_name: '', landmark: '', directions: '', additional_instructions: '' }
   addressdata;
@@ -44,6 +44,10 @@ export class AddressPage {
   constructor(public toastCtrl: ToastController, public apis: ApisProvider, public _form: FormBuilder, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public http: Http) {
     this.user_details = this.navParams.get("user_details")
     this.from_checkout = this.navParams.get("from_checkout")
+    this.order_id = this.navParams.get("order_id")
+
+    console.log("FROM CHECKOUT" + this.from_checkout)
+    console.log("ORDER ID" + this.order_id)
     
 
     this.body = this.user_details
@@ -98,7 +102,7 @@ export class AddressPage {
     loader.present();
 
     if (this.navParams.get('addressDetails')) {
-
+      console.log("--------UPDATING ADDRESS-----")
       this.apis.update_address(this.params).then((result) => {
         this.body1 = result;
         this.retrieved = this.body1
@@ -108,7 +112,7 @@ export class AddressPage {
      }
 
     else {
-
+      console.log("--------CREATING ADDRESS-----")
     this.apis.save_address(this.params).then((result) => {
       this.body1 = result;
       this.retrieved = this.body1
@@ -117,12 +121,13 @@ export class AddressPage {
   }
 
     loader.dismiss();
-    if (this.from_checkout == "1"){
-      this.navCtrl.push("FoodCheckoutPage", { user_details: this.user_details })
-    }
-    else{
-      this.navCtrl.push("CheckoutPage", { user_details: this.user_details })
-    }
+    this.navCtrl.push("FoodCheckoutPage", { user_details: this.user_details,order_id: this.order_id })
+    // if (this.from_checkout == "1"){
+    //   this.navCtrl.push("FoodCheckoutPage", { user_details: this.user_details })
+    // }
+    // else{
+    //   this.navCtrl.push("CheckoutPage", { user_details: this.user_details })
+    // }
     
   }
 

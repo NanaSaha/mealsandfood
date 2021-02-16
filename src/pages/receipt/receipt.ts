@@ -20,12 +20,14 @@ export class ReceiptPage {
   order_id: any;
   user_details: any;
   momo_network: any;
+  total_amount;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public apis: ApisProvider, public cartServ: CartService, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
     
     this.order_id = this.navParams.get("order_id")
     this.user_details = this.navParams.get("user_details")
     this.momo_network = this.navParams.get("momo_network")
+    this.total_amount = this.navParams.get("total_amount")
 
     this.body = this.user_details
     this.jsonBody = JSON.parse(this.body);
@@ -33,6 +35,7 @@ export class ReceiptPage {
     console.log("USer DETAILS " + this.user_details)
     console.log("USer ID " + this.user_id)
     console.log("momo_network " + this.momo_network)
+    console.log("total_amount " + this.total_amount)
 
 
 
@@ -48,6 +51,8 @@ export class ReceiptPage {
     this.check = this.cartServ.getGrandTotal()
     return this.cartServ.getGrandTotal();
   }
+
+  
 
   home(){ 
     this.navCtrl.setRoot("HomePage", {customer_details:this.user_details})

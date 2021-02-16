@@ -30,6 +30,15 @@ export class FoodCartPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public apis: ApisProvider, public cartServ: FoodCartService, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
 
     this.user_details = this.navParams.get("user_details")
+     //Checking if user data is shown / logged in
+     if ( this.user_details == undefined){
+      console.log("No Login - NO User Data");
+  
+
+    }
+
+    else {
+
     this.body = this.user_details
     this.jsonBody = JSON.parse(this.body);
     this.user_id = this.jsonBody[0].id
@@ -60,13 +69,16 @@ export class FoodCartPage {
 
     });
 
+    loader.dismiss();
+  }
+
     // retrieving all the cart items
 
     this.cartList = cartServ.getAllCartfoodItems();
     console.log("CARTLIST IN FOOD CART" + this.cartList)
     this.select = JSON.stringify(this.cartList)
-    loader.dismiss();
-
+    console.log("CARTLIST IN FOOD CART" + this.select)
+  
   }
 
 
@@ -75,13 +87,15 @@ export class FoodCartPage {
     this.cartServ.quantityPlus(item);
   }
 
+  
+
   quantityMinus(item) {
     if (item.quantity > 1) {
       this.cartServ.quantityMinus(item);
     } else {
       let alert = this.alertCtrl.create({
         title: 'Error',
-        subTitle: 'Quantity is 1, you cant reduce it, if you want to remove, please press remove button.',
+        subTitle: 'Quantity is 1, you cant reduce it, if you want to remove, please click the remove button.',
         buttons: ['Ok']
       });
       alert.present();
@@ -93,6 +107,8 @@ export class FoodCartPage {
     //this.cartService.removeItemById(item.id);
 
     let self = this;
+    console.log("ITEM " + item)
+    console.log ("String" + JSON.stringify(item))
 
     let alert = this.alertCtrl.create({
       title: 'Confirm Delete',
@@ -108,8 +124,8 @@ export class FoodCartPage {
         {
           text: 'Remove',
           handler: () => {
-            console.log('Buy clicked');
-            self.cartServ.removeItemById(item.id);
+            console.log('Removed');
+            self.cartServ.removeItemById(item.food_id);
           }
         }
       ]
@@ -121,12 +137,80 @@ export class FoodCartPage {
 
   getTotal(): number {
     this.check = this.cartServ.getGrandTotal()
+    console.log("GRAND TOTAL" + this.check)
     return this.cartServ.getGrandTotal();
+
+   
   }
 
 
 
   checkout(item) {
+
+     //Checking if user data is shown / logged in
+     if ( this.user_details == undefined){
+      console.log("No Login - NO User Data");
+
+      let confirm = this.alertCtrl.create({
+        title: '<img src = "assets/icon/danger.jpg" width="35px" height="35px"> Login Required',
+        message: 'You need to either login or sign up to checkout',
+        buttons: [
+          {
+            text: 'Login',
+            handler: () => {
+              let loader = this.loadingCtrl.create({
+                content: "Redirecting to Login Page...",
+                duration: 1000
+              });
+  
+              loader.present();
+  
+              setTimeout(() => {
+                console.log("logging out in 1 second");
+               
+               
+                this.navCtrl.push("LoginPage", { cart_or_sidemenu: "cart" });
+  
+              }, 1000);
+  
+              setTimeout(() => {
+                loader.dismiss();
+              }, 800);
+  
+            }
+          
+          },
+          {
+            text: 'Sign Up',
+            handler: () => {
+              let loader = this.loadingCtrl.create({
+                content: "Redirecting to Signup Page...",
+                duration: 1000
+              });
+  
+              loader.present();
+  
+              setTimeout(() => {
+                console.log("logging out in 1 second");
+               
+                this.navCtrl.push("SignupPage",{ cart_or_sidemenu: "cart" });
+  
+              }, 1000);
+  
+              setTimeout(() => {
+                loader.dismiss();
+              }, 800);
+  
+            }
+          }
+        ]
+      });
+      confirm.present();
+    
+    }
+
+    else {
+
 
 
         if (this.address_user_id.user_id > 0) { 
@@ -140,7 +224,7 @@ export class FoodCartPage {
 
         }
 
-
+      }
 
    }
 

@@ -1,97 +1,197 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>Pay</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content class="background">
-
   <ion-item no-lines>
     <h2>Pay with</h2>
   </ion-item>
 
   <ion-list radio-group [(ngModel)]="money">
-
     <ion-item no-lines>
-      <ion-label>
-        Mobile Money</ion-label>
-      <ion-radio value="momo"></ion-radio>
+      <angular4-paystack
+        [key]="'pk_live_6e429e6998e18b9ecdc9c2d42e884dee6da9d352'"
+        [email]="'mnf@gmail.com'"
+        [amount]="total_amount_plus_delivery"
+        [ref]="random_id"
+        [channels]="channels"
+        [currency]="'GHS'"
+        [class]="'btn btn-primary'"
+        (close)="paymentCancel()"
+        (callback)="paymentDone($event)"
+        >Pay with Mobile Money/Card</angular4-paystack
+      >
     </ion-item>
 
     <ion-item no-lines>
-      <ion-label>
-        Cash on delivery</ion-label>
+      <ion-label> Cash on delivery</ion-label>
       <ion-radio value="cash"></ion-radio>
     </ion-item>
 
+    <ion-card>
+      <ion-card-header> Alternative Mobile Money Payment</ion-card-header>
+
+      <ion-card-content>
+        Payment instructions for those outside Ghana.
+
+        <ul class="pricing-plan__list">
+          <li class="pricing-plan__feature">
+            Send Mobile Money to
+            <span style="color: #781318; font-weight: 800">0552967435 </span>
+          </li>
+          <li class="pricing-plan__feature">
+            M&F Momo Account name:
+            <span style="color: #781318; font-weight: 800"
+              >Meals And Foodstuff Limited</span
+            >
+            (Note if your money transfer app requires first and last name, use
+            first name: Meals, last name: Foodstuffs Limited .
+          </li>
+          <li class="pricing-plan__feature">
+            Send WhatsApp text to
+            <span style="color: #781318; font-weight: 800">233552967435 </span>
+            to let M&F know you made the payment and request for acknowledgment
+            of payment receipt.
+          </li>
+        </ul>
+      </ion-card-content>
+    </ion-card>
   </ion-list>
 
   <ion-list *ngIf="money == 'momo'">
-      <ion-item>
-          <p><b>Complete the details and make payment</b></p>
+    <ion-item>
+      <p><b>Complete the details and make payment</b></p>
+    </ion-item>
+
+    <form [formGroup]="paymentForm">
+      <ion-item no-lines>
+        <h2>Mobile money number</h2>
       </ion-item>
 
-      <form [formGroup]="paymentForm"> 
-    <ion-item no-lines>
-      <h2>Mobile money number</h2>
-    </ion-item>
+      <ion-item>
+        <ion-input
+          type="number"
+          placeholder="Enter your mobile money number"
+          formControlName="momo_number"
+          name="momo_number"
+          [class.invalid]="!paymentForm.controls.momo_number.valid && (paymentForm.controls.momo_number.dirty || submitAttempt)"
+        ></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-input type="number" placeholder="Enter your mobile money number" formControlName="momo_number" name="momo_number" [class.invalid]="!paymentForm.controls.momo_number.valid && (paymentForm.controls.momo_number.dirty || submitAttempt)"></ion-input>
-    </ion-item>
+      <ion-item no-lines>
+        <h2>Select Mobile Network</h2>
+      </ion-item>
 
-    <ion-item no-lines>
-      <h2>Select Mobile Network</h2>
-    </ion-item>
+      <ion-item>
+        <ion-label>Mobile Network</ion-label>
+        <ion-select
+          formControlName="network"
+          name="network"
+          [class.invalid]="!paymentForm.controls.network.valid && (paymentForm.controls.network.dirty || submitAttempt)"
+        >
+          <ion-option
+            formControlName="network"
+            name="network"
+            value="mtn"
+            ngDefaultControl
+            >Mtn</ion-option
+          >
+          <ion-option
+            formControlName="network"
+            name="network"
+            value="tigo"
+            ngDefaultControl
+          >
+            Tigo</ion-option
+          >
+          <ion-option
+            formControlName="network"
+            name="network"
+            value="vodafone"
+            ngDefaultControl
+            >Vodafone</ion-option
+          >
+          <ion-option
+            formControlName="network"
+            name="network"
+            value="airtel"
+            ngDefaultControl
+            >Airtel</ion-option
+          >
+        </ion-select>
+      </ion-item>
 
-    <ion-item>
-      <ion-label>Mobile Network</ion-label>
-      <ion-select formControlName="network" name="network" [class.invalid]="!paymentForm.controls.network.valid && (paymentForm.controls.network.dirty || submitAttempt)">
-        <ion-option formControlName="network" name="network"  value="mtn"  ngDefaultControl>Mtn</ion-option>
-        <ion-option formControlName="network" name="network" value="tigo"   ngDefaultControl> Tigo</ion-option>
-        <ion-option formControlName="network" name="network" value="vodafone"   ngDefaultControl>Vodafone</ion-option>
-        <ion-option formControlName="network" name="network" value="airtel"  ngDefaultControl>Airtel</ion-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item *ngIf="paymentForm.controls.network.value == 'vodafone'">
-      <ion-input type="text" placeholder="Enter Vodafone Voucher" formControlName="voucher" name="voucher" [class.invalid]="!paymentForm.controls.voucher.valid && (paymentForm.controls.voucher.dirty || submitAttempt)"></ion-input>
-    </ion-item>
-    <ion-card *ngIf="paymentForm.controls.network.value == 'vodafone'" >
-   
-          <ion-item>
-             <b text-wrap> Notice</b><br>
-             <p text-wrap> 1. Dial *110#</p> <br>
-             <p text-wrap> 2. Choose Option 6 to generate your payment Voucher</p><br>
-             <p text-wrap>3. You will recieve an SMS with a 6 digit Voucher Code</p><br>
-             <p text-wrap>4. Enter the Voucher Code in the voucher code input</p><br>
-             <p text-wrap>5. Initiate Payment by tapping the Pay button</p> <br>
-          </ion-item>
+      <ion-item *ngIf="paymentForm.controls.network.value == 'vodafone'">
+        <ion-input
+          type="text"
+          placeholder="Enter Vodafone Voucher"
+          formControlName="voucher"
+          name="voucher"
+          [class.invalid]="!paymentForm.controls.voucher.valid && (paymentForm.controls.voucher.dirty || submitAttempt)"
+        ></ion-input>
+      </ion-item>
+      <ion-card *ngIf="paymentForm.controls.network.value == 'vodafone'">
+        <ion-item>
+          <b text-wrap> Notice</b><br />
+          <p text-wrap>1. Dial *110#</p>
+          <br />
+          <p text-wrap>2. Choose Option 6 to generate your payment Voucher</p>
+          <br />
+          <p text-wrap>
+            3. You will recieve an SMS with a 6 digit Voucher Code
+          </p>
+          <br />
+          <p text-wrap>4. Enter the Voucher Code in the voucher code input</p>
+          <br />
+          <p text-wrap>5. Initiate Payment by tapping the Pay button</p>
+          <br />
+        </ion-item>
       </ion-card>
 
-      <ion-card *ngIf="paymentForm.controls.network.value == 'mtn'" >
-   
-          <ion-item>
-             <b text-wrap> Notice</b><br>
-    
-             <p text-wrap>Before making payment, please make sure you have no pending payment approval request</p>
-             
-          </ion-item>
+      <ion-card *ngIf="paymentForm.controls.network.value == 'mtn'">
+        <ion-item>
+          <b text-wrap> Notice</b><br />
+
+          <p text-wrap>
+            Before making payment, please make sure you have no pending payment
+            approval request
+          </p>
+        </ion-item>
       </ion-card>
-            
-  </form> 
+    </form>
   </ion-list>
-<br>
+  <br />
   <p *ngIf="money == 'momo'">
-      <button ion-button color="secondary" class="button button-dark customBtn" [disabled]="!this.paymentForm.valid" (tap)="pay()">Pay GHS {{getTotal() + 15}}</button>
-     
-    </p>
-  <p *ngIf="money == 'cash'">
-  <button ion-button color="secondary" class="button button-dark customBtn" (tap)="cash_pay()">Place Order</button>
+    <button
+      ion-button
+      color="secondary"
+      class="button button-dark customBtn"
+      [disabled]="!this.paymentForm.valid"
+      (tap)="pay()"
+    >
+      Pay GHS {{total_amount_plus_delivery}}
+    </button>
   </p>
- 
- 
+  <p *ngIf="money == 'cash'">
+    <button
+      ion-button
+      color="secondary"
+      class="button button-dark customBtn"
+      (tap)="cash_pay()"
+    >
+      Place Order
+    </button>
+  </p>
 </ion-content>
+
+<!-- <ion-footer >
+    <p *ngIf="money == 'momo'">
+        <button ion-button color="secondary" class="button button-dark customBtn" (tap)="pay()">Pay GHS {{getTotal() + 10}}</button>
+       
+      </p>
+  <p *ngIf="money == 'cash'">
+    <button ion-button color="secondary" class="button button-dark customBtn" (tap)="pay()">Place Order</button>
+  </p>
+</ion-footer> -->

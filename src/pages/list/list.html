@@ -35,7 +35,7 @@
         <ion-item>
 
           <h2>
-            <b>Weekly Foodstuff List</b>
+            <b>Weekly Foodstuff List -  GHC</b>
           </h2>
 
         </ion-item>
@@ -44,24 +44,24 @@
       <ion-item *ngFor="let item of body2">
         <ion-row>
 
-          <ion-col col-6 text-wrap>
+          <ion-col col-5 text-wrap>
             <h4>
               {{item.food_name}}
             </h4>
 
           </ion-col>
-          <ion-col col-6   text-wrap>
+          <ion-col col-3   text-wrap>
 
             <p>
-              GHC {{item.amount}}
+               {{item.amount}}
             </p>
           </ion-col>
-          <!-- <ion-col col-3>
+          <ion-col col-4>
 
             <p>
-              <button ion-button color="secondary" outline (tap)="edit(item)"> Edit</button>
+              <button ion-button color="primary" outline (tap)="edit(item)">Remove</button>
             </p>
-          </ion-col> -->
+          </ion-col>
         </ion-row>
       </ion-item>
     </ion-list>
@@ -76,7 +76,7 @@
         <ion-item>
 
           <h2>
-            <b>Monthly Foodstuff List</b>
+            <b>Monthly Foodstuff List -  GHC</b>
           </h2>
 
         </ion-item>
@@ -91,11 +91,11 @@
     </ion-list>
   </div>
 
-
+<!-- 
   <div class="center1" *ngIf="!body2">
     <img src="assets/imgs/notavail.svg" height="50px" width="70px" />
     <p style="color: #757575; text-align: center">No List created </p>
-  </div>
+  </div> -->
 
 
 

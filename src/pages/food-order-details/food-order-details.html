@@ -17,23 +17,19 @@
             <ion-thumbnail item-left>
            <img *ngIf="option" [src]="option.food_logo_url"  />
             </ion-thumbnail>
-            <!-- <h4 text-wrap style="color: #781318"> Product name:<p>{{ option.food_name}}</p></h4> 
-            <h4 text-wrap style="color: #781318"> Price:</h4> GHC {{ option.price}}
-            <h4 text-wrap style="color: #781318"> Special Requests:</h4> {{ option.requests}}
-            <h4 text-wrap style="color: #781318"> Specific Delivery Location:</h4> {{ option.new_location}} -->
+         
             <p text-wrap> Product name:{{ option.food_name}}</p> 
             <p text-wrap> Price: GHC {{ option.price}}</p>
-              <p text-wrap > Special Requests: {{ option.requests}}</p>
-                <p text-wrap> Specific Delivery Location: {{ option.new_location}}</p>
+            
+              <!-- <p text-wrap > Special Requests: {{ option.requests}}</p>
+                <p text-wrap> Specific Delivery Location: {{ option.new_location}}</p> -->
             
           </ion-item>
   
         </ion-list>
       </ion-list>
       <br>
-      <!-- </ion-card>
-  
-      </ion-card-content> -->
+     <p class="pad" >TOTAL AMOUNT: {{total_price}}</p>
   </ion-content>
 
   <ion-footer >

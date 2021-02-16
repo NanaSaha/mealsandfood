@@ -34,6 +34,17 @@ export class CheckoutPage {
   different_location: any;
   yesorno: any;
 
+    NewLocation: any;
+  SpecialRequest: any;
+  total_amt;
+  total_amount_plus_delivery;
+  service_fee;
+  delivery_fee;
+
+   points;
+  redeemable_amount;
+  time;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public apis: ApisProvider, public cartServ: CartService, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
     this.user_details = this.navParams.get("user_details")
     
@@ -59,11 +70,74 @@ export class CheckoutPage {
     }
 
 
+     //Retrieve Time SLOTS
+      this.apis.retrieve_time_slot().then(
+        (result) => {
+          console.log(result);
+
+          this.time = result
+       
+          console.log("time SLOTS" + this.time);
+          console.log("time SLOTS STRING" + JSON.stringify(this.time ));
+         
+          }
+      )
+
+          //Retrieve Loyalty Points
+      this.apis.retrieve_loyalty_points(this.params).then(
+        (result) => {
+          console.log(result);
+
+          this.points = result[0].points;
+         this.redeemable_amount = result[0].redeemable_amount;
+            console.log("points,redeemable_amount " + this.points ,  this.redeemable_amount);
+         
+          }
+      )
+        //END Retrieve Loyalty Points
+
+
     this.apis.retrieve_address_details(this.params).then((result) => {
       this.body2 = result;
       this.address_details = JSON.stringify(this.body2)
       console.log("Lets see all the restaurant_details as body " + this.body2)
       console.log("Lets see all the restaurant_details " + this.address_details)
+    });
+
+
+        this.apis.retrieve_delivery_charges().then((result) => {
+      this.body = result;
+  
+      console.log(this.body)
+      console.log(JSON.stringify(this.body))
+      console.log("Information", this.body)
+
+      this.service_fee = this.body[0].service_fee
+      this.delivery_fee = this.body[0].delivery_fee
+  
+      console.log("------------SERV FEE _+ DELIVE-------------------------------------------")
+      console.log("SERVICE FEE" + this.service_fee) 
+      console.log("DEL FEE " + this.delivery_fee) 
+
+          console.log("CARTLIST ITEMS " + JSON.stringify(this.cartList))
+          
+       
+          if (this.points > 9999) {
+            this.total_amount_plus_delivery = (this.getTotal() - this.redeemable_amount) + (this.getTotal() * this.service_fee) + this.delivery_fee
+    
+    
+            console.log("TOTAL AMOUNT PLUS WITH REDEEMABLE DELIVERY" + this.total_amount_plus_delivery)
+          }
+          else {
+
+             this.total_amount_plus_delivery = (this.getTotal()) + (this.getTotal() * this.service_fee) + this.delivery_fee
+    
+    
+            console.log("TOTAL AMOUNT MINUS REDDEEMA PLUS DELIVERY" + this.total_amount_plus_delivery)
+            
+          }
+    
+     
     });
 
     loader.dismiss();
@@ -94,10 +168,13 @@ export class CheckoutPage {
     console.log(new_list);
     console.log(JSON.stringify(orders));
 
+    console.log("TOTAL AMOUNT PLUS DELIVERY" + this.total_amount_plus_delivery)
+
 
     this.params = {
       "user_id": this.user_id,
-      "orders": orders
+      "orders": orders,
+        "total_price": this.total_amount_plus_delivery 
     }
 
     let loader = this.loadingCtrl.create({
@@ -122,31 +199,41 @@ export class CheckoutPage {
       console.log('LETS SEE THE ORDER ID IN PROCESS ORDER ' + this.order_id);
 
 
-      this.params2 = {
-        "order_id": this.order_id,
+      loader.dismiss();
+      
+      this.navCtrl.push("PaymentPage", { order_id: this.order_id, user_details: this.user_details, requests: this.SpecialRequest,new_location: this.NewLocation , total_amount_plus_delivery: this.total_amount_plus_delivery})
+      // this.params2 = {
+      //   "order_id": this.order_id,
 
-      }
-      console.log("ORDER ID BEFOR PASSING IT " + this.params2)
+      // }
+      // console.log("ORDER ID BEFOR PASSING IT " + this.params2)
 
-      this.apis.order_details(this.params2).then((result) => {
+      // this.apis.order_details(this.params2).then((result) => {
 
-        console.log('LETS RESULTS ');
-        console.log(result);
-        var body1 = result;
+      //   console.log('LETS RESULTS ');
+      //   console.log(result);
+      //   var body1 = result;
 
-        this.orderJson = JSON.stringify(body1)
+      //   this.orderJson = JSON.stringify(body1)
 
-        console.log('LETS SEE THE DISPLAY ORDER JSON ' + this.orderJson);
+      //   console.log('LETS SEE THE DISPLAY ORDER JSON ' + this.orderJson);
 
-        loader.dismiss();
+      //   loader.dismiss();
 
-
-        // this.navCtrl.push("ReceiptPage", { order_id: this.order_id, user_details: this.user_details })
-        this.navCtrl.push("PaymentPage", { order_id: this.order_id, user_details: this.user_details })
-      });
+      //   this.navCtrl.push("PaymentPage", { order_id: this.order_id, user_details: this.user_details })
+      // });
 
     });
 
+    //params for special requests
+     console.log('SpecialRequest IS' + this.SpecialRequest);
+     console.log('NewLocation IS' + this.NewLocation); 
+     console.log('order_id IS' + this.order_id); 
+     this.params2 = {
+      "order_id": this.order_id,
+      "requests": this.SpecialRequest,
+      "new_location": this.NewLocation
+    }
 
   }
 

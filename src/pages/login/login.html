@@ -1,10 +1,19 @@
+<!-- <ion-header>
+  <ion-navbar>
+
+    <ion-title>
+      <p>Login</p>
+    </ion-title>
+
+  </ion-navbar>
+</ion-header> -->
 <ion-content overflow-scroll='true' class="background">
   <br/>
   <br/>
   <br/>
   <br/>
   <br/>
-  <form [formGroup]="loginForm">
+  <form [formGroup]="loginForm" class="move_form">
 
     <ion-list class="main-view">
       <br/>
@@ -12,7 +21,7 @@
       <br/>
       <br/>
       <ion-item>
-        <ion-input type="text" placeholder="Mobile number" formControlName="mobile_number" name="mobile_number" [class.invalid]="!loginForm.controls.mobile_number.valid && (loginForm.controls.mobile_number.dirty || submitAttempt)"></ion-input>
+        <ion-input type="number" placeholder="Mobile number" formControlName="mobile_number" name="mobile_number" [class.invalid]="!loginForm.controls.mobile_number.valid && (loginForm.controls.mobile_number.dirty || submitAttempt)"></ion-input>
         <ion-label>
           <ion-icon ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>
         </ion-label>
@@ -48,7 +57,7 @@
 
     </ion-list>
 
-    <ion-footer>
+    <!-- <ion-footer> -->
 
 
       <p class="pad">
@@ -60,7 +69,7 @@
         </b>
     </p>
 
-    </ion-footer>
+    <!-- </ion-footer> -->
 
 
   </form>

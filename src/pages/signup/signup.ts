@@ -23,10 +23,12 @@ export class SignupPage {
   jsonBody: any;
 
   public itemList: Array<Object>;
-
+  from_cart_or_sidemenu;
 
   constructor(public navCtrl: NavController, public apis: ApisProvider, public _form: FormBuilder, public toastCtrl: ToastController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
   
+    this.from_cart_or_sidemenu = this.navParams.get("cart_or_sidemenu")
+    console.log ("From Sidemenu or cart " +  this.from_cart_or_sidemenu)
 
    this.signupForm = this._form.group({
       "first_name": ["", Validators.compose([Validators.required])],
@@ -85,7 +87,29 @@ signup() {
       loader.present();
 
       setTimeout(() => {
-        this.navCtrl.setRoot("LoginPage");
+        if (this.from_cart_or_sidemenu == "sidemenu"){
+          this.navCtrl.setRoot("LoginPage", { cart_or_sidemenu: "sidemenu" });
+       
+        }
+        else if (this.from_cart_or_sidemenu == "cart"){
+          this.navCtrl.setRoot("LoginPage", { cart_or_sidemenu: "cart" });
+
+        }
+          
+           else if (this.from_cart_or_sidemenu == "meals_cart"){
+          this.navCtrl.setRoot("LoginPage", { cart_or_sidemenu: "meals_cart" });
+
+        }
+          
+            else if (this.from_cart_or_sidemenu == "catering_cart"){
+            this.navCtrl.push("LoginPage", { cart_or_sidemenu: "catering_cart" })
+
+          }
+        else {
+          this.navCtrl.setRoot("LoginPage", { cart_or_sidemenu: "sidemenu" });
+        }
+       
+        
       }, 3000);
 
       setTimeout(() => {
@@ -125,7 +149,19 @@ signup() {
 
 login(){
 
-this.navCtrl.push("LoginPage")
+
+
+if (this.from_cart_or_sidemenu == "sidemenu"){
+  this.navCtrl.push("LoginPage", { cart_or_sidemenu: "sidemenu" });
+
+}
+else if (this.from_cart_or_sidemenu == "cart"){
+  this.navCtrl.push("LoginPage", { cart_or_sidemenu: "cart" });
+
+}
+else {
+  this.navCtrl.push("LoginPage", { cart_or_sidemenu: "sidemenu" });
+}
 }
 
 }

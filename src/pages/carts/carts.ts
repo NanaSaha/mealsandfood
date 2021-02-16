@@ -29,9 +29,23 @@ export class CartsPage {
   address_user_id: any;
 
 
-  constructor(public toastCtrl: ToastController,public navCtrl: NavController, public navParams: NavParams, public apis: ApisProvider, public cartServ: CartService, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+  constructor(public toastCtrl: ToastController, public navCtrl: NavController, public navParams: NavParams, public apis: ApisProvider, public cartServ: CartService, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+    
+
+       // retrieving all the cart items
+    this.cartList = cartServ.getAllCartItems();
+    this.select = JSON.stringify(this.cartList)
+  
 
     this.user_details = this.navParams.get("user_details")
+      //Checking if user data is shown / logged in
+     if ( this.user_details == undefined){
+      console.log("No Login - NO User Data");
+  
+
+    }
+
+    else {
     this.body = this.user_details
     this.jsonBody = JSON.parse(this.body);
     this.user_id = this.jsonBody[0].id
@@ -59,7 +73,8 @@ export class CartsPage {
       console.log("USER ID " + this.address_user_id.user_id )
 
     },
-  
+    
+      
     (err) => {
   
       let alert = this.alertCtrl.create({
@@ -77,11 +92,9 @@ export class CartsPage {
       console.log(err);
     });
 
+   loader.dismiss();
 
-    // retrieving all the cart items
-    this.cartList = cartServ.getAllCartItems();
-    this.select = JSON.stringify(this.cartList)
-    loader.dismiss();
+     }
 
   }
 
@@ -143,83 +156,83 @@ export class CartsPage {
 
   checkout(item) {
 
-    // let prod_details = this.cartList
-    // let orders = {};
-    // let new_list = [];
+       //Checking if user data is shown / logged in
+    if (this.user_details == undefined) {
+      console.log("No Login - NO User Data");
 
-    // for (let x in prod_details) {
-    //   new_list.push({ 'meals_id': prod_details[x]['meals_id'], 'quantity': prod_details[x]['quantity'] })
-    // }
+      let confirm = this.alertCtrl.create({
+        title: '<img src = "assets/icon/danger.jpg" width="35px" height="35px"> Login Required',
+        message: 'You need to either login or sign up to checkout',
+        buttons: [
+          {
+            text: 'Login',
+            handler: () => {
+              let loader = this.loadingCtrl.create({
+                content: "Redirecting to Login Page...",
+                duration: 1000
+              });
+  
+              loader.present();
+  
+              setTimeout(() => {
+                console.log("logging out in 1 second");
+               
+               
+                this.navCtrl.push("LoginPage", { cart_or_sidemenu: "meals_cart" });
+  
+              }, 1000);
+  
+              setTimeout(() => {
+                loader.dismiss();
+              }, 800);
+  
+            }
+          
+          },
+          {
+            text: 'Sign Up',
+            handler: () => {
+              let loader = this.loadingCtrl.create({
+                content: "Redirecting to Signup Page...",
+                duration: 1000
+              });
+  
+              loader.present();
+  
+              setTimeout(() => {
+                console.log("logging out in 1 second");
+               
+                this.navCtrl.push("SignupPage", { cart_or_sidemenu: "meals_cart" });
+  
+              }, 1000);
+  
+              setTimeout(() => {
+                loader.dismiss();
+              }, 800);
+  
+            }
+          }
+        ]
+      });
+      confirm.present();
+    
+    }
 
-    // orders = new_list
+    else {
 
-    // console.log(new_list);
-    // console.log(JSON.stringify(orders));
+      if (this.address_user_id.user_id > 0) {
+        this.navCtrl.push("CheckoutPage",
 
+          { user_details: this.user_details, order_id: this.order_id });
 
-    // this.params = {
-    //   "user_id": this.user_id,
-    //   "orders": orders
-    // }
+      }
+      else {
+        this.navCtrl.push("AddressPage", { order_id: this.order_id, user_details: this.user_details });
 
-    // let loader = this.loadingCtrl.create({
-    //   content: "Please wait ...",
-    // });
-
-    // loader.present();
-
-    // console.log("PARAMS + ");
-    // console.log(this.params);
-
-    // this.apis.process_order(this.params).then((result) => {
-
-    //   console.log('LETS RESULTS ' + result);
-    //   console.log(result);
-    //   var body1 = result;
-
-    //   this.orderJson = JSON.stringify(body1)
-    //   this.order_id = body1['order_id']
-
-    //   console.log('LETS SEE THE PROCESS ORDER ' + this.orderJson);
-    //   console.log('LETS SEE THE ORDER ID IN PROCESS ORDER ' + this.order_id);
+      }
 
 
-    //   this.params2 = {
-    //     "order_id": this.order_id,
-
-    //   }
-    //   console.log("ORDER ID BEFOR PASSING IT " + this.params2)
-
-    //   this.apis.display_orders(this.params2).then((result) => {
-
-    //     console.log('LETS RESULTS ');
-    //     console.log(result);
-    //     var body1 = result;
-
-    //     this.orderJson = JSON.stringify(body1)
-
-    //     console.log('LETS SEE THE DISPLAY ORDER JSON ' + this.orderJson);
-
-    //     loader.dismiss();
-
-        if (this.address_user_id.user_id > 0) { 
-          this.navCtrl.push("CheckoutPage",
-
-          { user_details: this.user_details ,order_id: this.order_id});
-
-        }
-         else {
-          this.navCtrl.push("AddressPage",{ order_id: this.order_id,user_details: this.user_details });
-
-        }
-
-       
-
-
-  //     });
-
-  //   });
-
+    }
 
    }
 
